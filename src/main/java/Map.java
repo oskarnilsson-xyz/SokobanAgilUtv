@@ -14,7 +14,22 @@ public class Map {
                     new String[] { ".", ".", ".", ".", ".", ".", ".", ".", ".", "." },
                     new String[] { ".", ".", ".", ".", ".", ".", ".", ".", ".", "." }
             };
-    
+    String[][] mapTemplate1 =
+            {
+                    new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", "G", ".", "B", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", "P", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" }
+            };
+
+
+    Game game;
 
     String[][] tempMap;
 
@@ -58,20 +73,45 @@ public class Map {
         }
         return map[y][x];
     }
+    public void mapBuilder(){ //String[][] mapTemplate1
+        //game = new Game();
+     for (int y = 0; y < mapTemplate1.length; y++) { //Make Walls
+        for (int x = 0; x < mapTemplate1[y].length; x++) {
+            String tile = mapTemplate1[x][y];
+            if (tile.equals("W")) {
+                game.objects.add(new Wall(x, y));
 
-    String[][] mapTemplate1 =
-            {
-                    new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", "G", ".", "B", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", "P", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" }
-            };
+            }
+        }
+    }
+            for (int y = 0; y < mapTemplate1.length; y++) { //Make goal
+        for (int x = 0; x < mapTemplate1[y].length; x++) {
+            String tile = mapTemplate1[x][y];
+            if (tile.equals("G")) {
+                game.objects.add(new GoalTile(x, y));
+            }
+
+        }
+    }
+            for (int y = 0; y < mapTemplate1.length; y++) {//Make Box
+        for (int x = 0; x < mapTemplate1[y].length; x++) {
+            String tile = mapTemplate1[x][y];
+            if (tile.equals("B")) {
+                game.objects.add(new Box(x, y));
+            }
+
+        }
+    }
+            for (int y = 0; y < mapTemplate1.length; y++) { //Make player
+        for (int x = 0; x < mapTemplate1[y].length; x++) {
+            String tile = mapTemplate1[x][y];
+            if (tile.equals("P")) {
+                game.objects.add(new Player(x, y));
+            }
+
+        }
+    }
+}
 
 
 
