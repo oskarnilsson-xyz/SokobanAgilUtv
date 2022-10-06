@@ -16,6 +16,11 @@ public class Game {
 
         for (int y = 0; y < map.mapTemplate1.length; y++) { //Make Walls
             for (int x = 0; x < map.mapTemplate1[y].length; x++) {
+
+                String tile;
+                if()
+            
+
                 String tile = map.mapTemplate1[x][y];
                 if (tile.equals("W")) {
                     objects.add(new Wall(x, y)); //Bugg i constructorn
