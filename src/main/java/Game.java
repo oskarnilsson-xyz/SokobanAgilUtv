@@ -6,8 +6,13 @@ public class Game {
 
     public Game() {
         map = new Map();
+
         // map.buildMapFromTemplate();
-        objects.add(new GameObject(5, 5, "P"));
+
+
+        objects.add(new Player(5, 5)); //tar bara två argument då "P" definieras i Player-konstruktorn.
+                                            // Positionen beror på bana/bandesign
+
 
         for (int y = 0; y < map.mapTemplate1.length; y++) {
             for (int x = 0; x < map.mapTemplate1[y].length; x++) {
@@ -21,8 +26,13 @@ public class Game {
         map.PrintMap(objects);
     }
 
-    // Move the given object one step left.
-    public boolean MoveLeft(GameObject gameObject) {
+
+
+
+    // Move the given object one step left
+    public boolean MoveLeft(GameObject gameObject)
+    {
+
         // Get what kind of tile we're stepping on.
         String tile = map.ReturnTile(gameObject.getX() - 1, gameObject.getY());
 
