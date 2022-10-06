@@ -10,15 +10,46 @@ public class Game {
         // map.buildMapFromTemplate();
 
 
-        objects.add(new Player(5, 5)); //tar bara två argument då "P" definieras i Player-konstruktorn.
-                                            // Positionen beror på bana/bandesign
+        //objects.add(new Player(5, 5)); //tar bara två argument då "P" definieras i Player-konstruktorn.
+        // Positionen beror på bana/bandesign
 
 
-        for (int y = 0; y < map.mapTemplate1.length; y++) {
+        for (int y = 0; y < map.mapTemplate1.length; y++) { //Make Walls
             for (int x = 0; x < map.mapTemplate1[y].length; x++) {
-                String tile
-                if()
-                objects.add(new GameObject(1, 1, "W"));
+                String tile = map.mapTemplate1[x][y];
+                if (tile.equals("W")) {
+                    objects.add(new Wall(x, y)); //Bugg i constructorn
+                }
+
+            }
+        }
+
+       for (int y = 0; y < map.mapTemplate1.length; y++) { //Make goal
+            for (int x = 0; x < map.mapTemplate1[y].length; x++) {
+                String tile = map.mapTemplate1[x][y];
+                if(tile.equals("G")){
+                    objects.add(new GameObject(x, y, "G"));// Fixa till rätt klass efter en merge
+                }
+
+            }
+        }
+        for (int y = 0; y < map.mapTemplate1.length; y++) {//Make Box
+            for (int x = 0; x < map.mapTemplate1[y].length; x++) {
+                String tile = map.mapTemplate1[x][y];
+                if(tile.equals("B")){
+                    objects.add(new GameObject(x, y, "B"));// Fixa till rätt klass efter en merge
+                }
+
+            }
+        }
+        for (int y = 0; y < map.mapTemplate1.length; y++) { //Make player
+
+            for (int x = 0; x < map.mapTemplate1[y].length; x++) {
+                String tile = map.mapTemplate1[x][y];
+                if (tile.equals("P")) {
+                    objects.add(new Player(x, y));
+                }
+
             }
         }
 
@@ -27,11 +58,8 @@ public class Game {
     }
 
 
-
-
     // Move the given object one step left
-    public boolean MoveLeft(GameObject gameObject)
-    {
+    public boolean MoveLeft(GameObject gameObject) {
 
         // Get what kind of tile we're stepping on.
         String tile = map.ReturnTile(gameObject.getX() - 1, gameObject.getY());
