@@ -63,9 +63,9 @@ public class Map {
             {
                     new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", "G", ".", "B", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", "P", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
@@ -73,24 +73,6 @@ public class Map {
                     new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" }
             };
 
-    /*public void buildMapFromTemplate(){
-        Game game = new Game();
 
-
-            for (int y = 0; y < mapTemplate1.length; y++)
-            {
-                for (int x = 0; x < mapTemplate1[y].length; x++)
-                {
-                    game.objects.add(new GameObject(1, 1, "W"));
-                }
-
-            }
-
-
-
-
-
-
-    }*/
 
 }
