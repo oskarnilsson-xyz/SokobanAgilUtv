@@ -1,8 +1,14 @@
 public class GameObject {
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
 
-    private String mapMarker;
+    protected String mapMarker;
+
+    protected boolean solid;
+
+
+
+
 
     public int getX() {
         return x;
