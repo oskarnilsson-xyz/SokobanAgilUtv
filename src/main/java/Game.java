@@ -16,7 +16,7 @@ public class Game {
 
         for (int y = 0; y < map.mapTemplate1.length; y++) {
             for (int x = 0; x < map.mapTemplate1[y].length; x++) {
-                String tile
+                String tile;
                 if()
                 objects.add(new GameObject(1, 1, "W"));
             }
