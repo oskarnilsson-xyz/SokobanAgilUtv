@@ -14,6 +14,7 @@ public class Map {
                     new String[] { ".", ".", ".", ".", ".", ".", ".", ".", ".", "." },
                     new String[] { ".", ".", ".", ".", ".", ".", ".", ".", ".", "." }
             };
+    
 
     String[][] tempMap;
 
@@ -57,4 +58,39 @@ public class Map {
         }
         return map[y][x];
     }
+
+    String[][] mapTemplate1 =
+            {
+                    new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" }
+            };
+
+    /*public void buildMapFromTemplate(){
+        Game game = new Game();
+
+
+            for (int y = 0; y < mapTemplate1.length; y++)
+            {
+                for (int x = 0; x < mapTemplate1[y].length; x++)
+                {
+                    game.objects.add(new GameObject(1, 1, "W"));
+                }
+
+            }
+
+
+
+
+
+
+    }*/
+
 }
