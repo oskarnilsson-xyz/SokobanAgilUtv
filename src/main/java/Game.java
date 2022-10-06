@@ -6,12 +6,13 @@ public class Game {
     public Game()
     {
         map = new Map();
-        objects.add(new GameObject(5, 5, "P"));
+        objects.add(new Player(5, 5)); //tar bara två argument då "P" definieras i Player-konstruktorn.
+                                            // Positionen beror på bana/bandesign
 
         map.PrintMap(objects);
     }
 
-    // Move the given object one step left.
+    // Move the given object one step left
     public boolean MoveLeft(GameObject gameObject)
     {
         // Get what kind of tile we're stepping on.
