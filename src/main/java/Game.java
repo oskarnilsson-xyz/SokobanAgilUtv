@@ -1,65 +1,24 @@
 import java.util.ArrayList;
 
 public class Game {
-    Map map;
-    ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    Map map = new Map();
+    //Player player = new Player();
+    public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
 
-    public Game() {    //Göra statiskt
-        map = new Map();
-
-        // map.buildMapFromTemplate();
-
-        map.mapBuilder(); //map.mapTemplate1
-        //objects.add(new Player(5, 5)); //tar bara två argument då "P" definieras i Player-konstruktorn.
-        // Positionen beror på bana/bandesign
+    public Game() {
 
 
-/*
-        for (int y = 0; y < map.mapTemplate1.length; y++) { //Make Walls
-            for (int x = 0; x < map.mapTemplate1[y].length; x++) {
-                String tile = map.mapTemplate1[x][y];
-                if (tile.equals("W")) {
-                    objects.add(new Wall(x, y));
-
-                }
-            }
-        }
-            for (int y = 0; y < map.mapTemplate1.length; y++) { //Make goal
-                for (int x = 0; x < map.mapTemplate1[y].length; x++) {
-                    String tile = map.mapTemplate1[x][y];
-                    if (tile.equals("G")) {
-                        objects.add(new GoalTile(x, y));
-                    }
-
-                }
-            }
-            for (int y = 0; y < map.mapTemplate1.length; y++) {//Make Box
-                for (int x = 0; x < map.mapTemplate1[y].length; x++) {
-                    String tile = map.mapTemplate1[x][y];
-                    if (tile.equals("B")) {
-                        objects.add(new Box(x, y));
-                    }
-
-                }
-            }
-            for (int y = 0; y < map.mapTemplate1.length; y++) { //Make player
-
-                for (int x = 0; x < map.mapTemplate1[y].length; x++) {
-                    String tile = map.mapTemplate1[x][y];
-                    if (tile.equals("P")) {
-                        objects.add(new Player(x, y));
-                    }
-
-                }
-            }*/
+        map.mapBuilder(map.mapTemplate1);
 
 
-            map.PrintMap(objects);
-        }
+        map.PrintMap(objects);
 
 
-        // Move the given object one step left
-    /* public boolean MoveLeft(GameObject gameObject) {
+    }
+
+
+    // Move the given object one step left
+    public boolean MoveLeft(GameObject gameObject) {
 
         // Get what kind of tile we're stepping on.
         String tile = map.ReturnTile(gameObject.getX() - 1, gameObject.getY());
@@ -76,6 +35,6 @@ public class Game {
 
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
         return true;
-    }*/
-
     }
+
+}

@@ -28,6 +28,9 @@ public class GameObject {
         this.mapMarker = mapMarker;
     }
 
+    public GameObject() {
+    }
+
     public GameObject(int x, int y, String mapMarker)
     {
         this.x = x;
