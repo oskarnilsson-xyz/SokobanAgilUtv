@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Game {
-    Map map = new Map();
     //Player player = new Player();
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    Map map = new Map();
 
     public Game() {
 
@@ -17,11 +17,10 @@ public class Game {
     }
 
 
-    // Move the given object one step left
-    public boolean MoveLeft(GameObject gameObject) {
+    // Move Right
+    public boolean MoveLeft(Player gameObject) {
 
-        // Get what kind of tile we're stepping on.
-        String tile = map.ReturnTile(gameObject.getX() - 1, gameObject.getY());
+        String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() + 1);        // Get what kind of tile we're stepping on.
 
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
@@ -30,8 +29,54 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
+        gameObject.setX(gameObject.getX() + 1); // Move the object's x one step right.
+        return true;
+    }
 
-        // Perhaps add code to see if we're walking into another object, too.
+    //Move Down -Ner i Y led = plus 1
+    public boolean MoveRight(Player gameObject) {
+
+        String tile = map.ReturnTile(gameObject.getY() + 1, gameObject.getX());         // Get what kind of tile we're stepping on.
+
+        if (tile.equals("")) {
+            System.out.println("That's out of bounds!");
+            return false;
+        } else if (tile.equals("w")) {
+            System.out.println("That's a wall!");
+            return false;
+        }
+        gameObject.setY(gameObject.getY() + 1); // Move the object's x one step down.
+        return true;
+    }
+
+    //Move Up -Upp i Y led = minus 1
+    public boolean MoveUp(Player gameObject) {
+
+        String tile = map.ReturnTile(gameObject.getY() - 1, gameObject.getX());         // Get what kind of tile we're stepping on.
+
+        if (tile.equals("")) {
+            System.out.println("That's out of bounds!");
+            return false;
+        } else if (tile.equals("w")) {
+            System.out.println("That's a wall!");
+            return false;
+        }
+        gameObject.setY(gameObject.getY() - 1); // Move the object's x one step up.
+        return true;
+    }
+
+    //Move Left
+    public boolean MoveDown(Player gameObject) {
+
+        String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() - 1);         // Get what kind of tile we're stepping on.
+
+        if (tile.equals("")) {
+            System.out.println("That's out of bounds!");
+            return false;
+        } else if (tile.equals("w")) {
+            System.out.println("That's a wall!");
+            return false;
+        }
 
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
         return true;

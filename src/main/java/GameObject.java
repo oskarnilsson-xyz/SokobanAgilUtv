@@ -29,10 +29,10 @@ public class GameObject {
     }
 
 
-    public GameObject(int x, int y, String mapMarker)
+    public GameObject(int y, int x, String mapMarker)
     {
-        this.x = x;
         this.y = y;
+        this.x = x;
         this.mapMarker = mapMarker;
     }
 }

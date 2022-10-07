@@ -77,7 +77,7 @@ public class Map {
         tempMap = map.clone();
         for(GameObject obj : objects)
         {
-            tempMap[obj.getX()][obj.getY()] = obj.getMapMarker();
+            tempMap[obj.getY()][obj.getX()] = obj.getMapMarker();
         }
 
         PrintMap(tempMap);
@@ -86,50 +86,50 @@ public class Map {
     // This function prints a map that is given to it.
     private void PrintMap(String[][] mapToPrint)
     {
-        for (int y = 0; y < mapToPrint.length; y++)
+        for (int x = 0; x < mapToPrint.length; x++)
         {
-            for (int x = 0; x < mapToPrint[y].length; x++)
+            for (int y = 0; y < mapToPrint[x].length; y++)
             {
-                System.out.print(mapToPrint[y][x] + " ");
+                System.out.print(mapToPrint[x][y] + " ");
             }
             System.out.println();
         }
     }
 
     // Returns what kind of tile it is via an x and y value.
-    public String ReturnTile(int x, int y)
+    public String ReturnTile(int y, int x)
     {
-        if (x < 0 || y < 0 || x > map[y].length || y > map.length)
+        if (x < 0 || y < 0 || y > map[y].length || x > map.length)
         {
             return "";
         }
-        return map[y][x];
+        return map[x][y];
     }
     public void mapBuilder(String[][] fromTemplate){ // mapTemplate1
 
-     for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
-        for (int x = 0; x < fromTemplate[y].length; x++) {
-            String tile = fromTemplate[x][y];
+     for (int x = 0; x < fromTemplate.length; x++) { //Make Walls
+        for (int y = 0; y < fromTemplate[x].length; y++) {
+            String tile = fromTemplate[y][x];
             if (tile.equals("W")) {
-                Game.objects.add(new Wall(x, y));
+                Game.objects.add(new Wall(y, x));
 
             }
         }
     }
-            for (int y = 0; y < fromTemplate.length; y++) { //Make goal
-        for (int x = 0; x < fromTemplate[y].length; x++) {
-            String tile = fromTemplate[x][y];
+            for (int x = 0; x < fromTemplate.length; x++) { //Make goal
+        for (int y = 0; y < fromTemplate[x].length; y++) {
+            String tile = fromTemplate[y][x];
             if (tile.equals("G")) {
-                Game.objects.add(new GoalTile(x, y));
+                Game.objects.add(new GoalTile(y, x));
             }
 
         }
     }
-            for (int y = 0; y < fromTemplate.length; y++) {//Make Box
-        for (int x = 0; x < fromTemplate[y].length; x++) {
-            String tile = fromTemplate[x][y];
+            for (int x = 0; x < fromTemplate.length; x++) {//Make Box
+        for (int y = 0; y < fromTemplate[x].length; y++) {
+            String tile = fromTemplate[y][x];
             if (tile.equals("B")) {
-                Game.objects.add(new Box(x, y));
+                Game.objects.add(new Box(y, x));
             }
 
         }
