@@ -70,7 +70,6 @@ public class Game {
     public boolean MoveUp(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY() - 1, gameObject.getX());         // Get what kind of tile we're stepping on.
-
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
