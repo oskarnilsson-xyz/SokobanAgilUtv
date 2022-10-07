@@ -4,12 +4,6 @@ public class GameObject {
 
     protected String mapMarker;
 
-    protected boolean solid;
-
-
-
-
-
     public int getX() {
         return x;
     }
@@ -34,22 +28,10 @@ public class GameObject {
         this.mapMarker = mapMarker;
     }
 
-    public boolean isSolid() {
-        return solid;
-    }
-
-    public void setSolid(boolean solid) {
-        this.solid = solid;
-    }
-
-
-
     public GameObject(int x, int y, String mapMarker)
     {
         this.x = x;
         this.y = y;
         this.mapMarker = mapMarker;
     }
-
-
 }
