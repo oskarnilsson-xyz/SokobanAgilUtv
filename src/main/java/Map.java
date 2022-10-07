@@ -58,7 +58,7 @@ public class Map {
                     new String[] { "W", "G", "W", "P", ".", ".", ".", "G", "G", "W" },
                     new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" }
             };
-    Player player = new Player();
+
 
 
 
