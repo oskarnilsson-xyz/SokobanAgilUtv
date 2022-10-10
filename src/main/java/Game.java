@@ -49,6 +49,17 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setX(box.getX() - 1);
+                }
+            }
+
+
+        }
 
         return true;
 
@@ -68,6 +79,15 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() + 1); // Move the object's x one step right.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setX(box.getX() + 1);
+                }
+            }
+        }
         return true;
     }
 
@@ -84,6 +104,16 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setY(gameObject.getY() - 1); // Move the object's x one step up.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setY(box.getY() - 1);
+                }
+            }
+
+        }
         return true;
     }
 
@@ -102,6 +132,15 @@ public class Game {
 
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setY(gameObject.getY() + 1); // Move the object's x one step down.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setY(box.getX() + 1);
+                }
+            }
+        }
         return true;
     }
 
