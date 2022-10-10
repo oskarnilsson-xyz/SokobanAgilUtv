@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Game {
     //Player player = new Player();
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    public static ArrayList<GameObject> boxes = new ArrayList<GameObject>();
     Map map = new Map();
     Scanner scan = new Scanner(System.in);
 
@@ -45,7 +46,7 @@ public class Game {
     public boolean MoveLeft(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() - 1);         // Get what kind of tile we're stepping on.
-
+        Integer x = gameObject.getX();
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
@@ -55,11 +56,23 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
+
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setX(box.getX() - 1);
+                }
+            }
+        }
+
         return true;
 
     }
 
-    //Move Right
+
+    //Move Right;
     public boolean MoveRight(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() + 1);         // Get what kind of tile we're stepping on.
@@ -73,6 +86,15 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() + 1); // Move the object's x one step right.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setX(box.getX() + 1);
+                }
+            }
+        }
         return true;
     }
 
@@ -89,6 +111,16 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setY(gameObject.getY() - 1); // Move the object's x one step up.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setY(box.getY() - 1);
+                }
+            }
+
+        }
         return true;
     }
 
@@ -107,6 +139,15 @@ public class Game {
 
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setY(gameObject.getY() + 1); // Move the object's x one step down.
+        for (GameObject box : objects) {
+            if (box instanceof Box) {
+                int boxX = box.getX();
+                int boxY = box.getY();
+                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
+                    box.setY(box.getX() + 1);
+                }
+            }
+        }
         return true;
     }
 

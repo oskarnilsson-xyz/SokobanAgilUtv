@@ -23,10 +23,10 @@ public class Map {
             {
                     new String[] { "W", "W", "W", "W", "W", "W", "W", "W", "W", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", "G", ".", "B", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", "G", ".", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
-                    new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
+                    new String[] { "W", ".", ".", ".", "B", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
                     new String[] { "W", ".", ".", ".", ".", ".", ".", ".", ".", "W" },
@@ -130,6 +130,7 @@ public class Map {
             String tile = fromTemplate[y][x];
             if (tile.equals("B")) {
                 Game.objects.add(new Box(y, x));
+                Game.boxes.add(new Box(y, x));
             }
 
         }
