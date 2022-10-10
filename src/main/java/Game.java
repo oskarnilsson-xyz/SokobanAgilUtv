@@ -8,12 +8,12 @@ public class Game {
     Scanner scan = new Scanner(System.in);
 
     public Game() {
-
-        map.mapBuilder(map.mapTemplate1);
+        System.out.println("Du rör din spelare med:\na = vänster\nd = höger\nw = uppåt\ns = nedåt\n\"exit\" avslutar programmet");
+        map.mapBuilder(map.mapTemplate1);  //banan borde vara en variabel som ges av menyvalet
         map.PrintMap(objects);
 
-        while (checkWin(map.mapTemplate1) == false) {
-            String input = scan.nextLine();
+        while (checkWin(map.mapTemplate1) == false) { //banan borde vara en variabel som ges av menyvalet
+            String input = scan.nextLine().trim().toLowerCase();
             switch (input) {
                 case "a":
                     MoveLeft(map.player1);
@@ -31,11 +31,14 @@ public class Game {
                     MoveDown(map.player1);
                     map.PrintMap(objects);
                     break;
+                case "exit":
+                    System.exit(0);
                 default:
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
-        }
     }
+
+}
 
 
     // Move Left
@@ -117,7 +120,7 @@ public class Game {
                 String tile2 = currentMap[y][x];
                 if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
                     return false;
-                } else if (tile1.equals("P")) {
+                } else if (tile1.equals("G")) {
                     return false;
                 }
             }
