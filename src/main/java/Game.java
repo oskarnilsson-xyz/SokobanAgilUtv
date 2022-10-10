@@ -52,7 +52,6 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
-
         return true;
 
     }
