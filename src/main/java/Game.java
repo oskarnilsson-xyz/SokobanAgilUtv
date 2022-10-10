@@ -34,7 +34,7 @@ public class Game {
     }
 
 
-    // Move Right
+    // Move Left
     public boolean MoveLeft(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() - 1);        // Get what kind of tile we're stepping on.
@@ -46,11 +46,11 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
-        gameObject.setX(gameObject.getX() - 1); // Move the object's x one step right.
+        gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
         return true;
     }
 
-    //Move Down -Ner i Y led = plus 1
+    //Move Right
     public boolean MoveRight(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY() , gameObject.getX()+ 1);         // Get what kind of tile we're stepping on.
@@ -62,7 +62,7 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
-        gameObject.setX(gameObject.getX() + 1); // Move the object's x one step down.
+        gameObject.setX(gameObject.getX() + 1); // Move the object's x one step right.
         return true;
     }
 
@@ -81,7 +81,7 @@ public class Game {
         return true;
     }
 
-    //Move Down
+    //Move Down -Ner i Y led = plus 1
     public boolean MoveDown(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY() + 1, gameObject.getX());         // Get what kind of tile we're stepping on.
