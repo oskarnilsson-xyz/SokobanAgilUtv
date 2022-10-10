@@ -6,9 +6,10 @@ public class Game {
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
     Map map = new Map();
     Scanner scan = new Scanner(System.in);
+
     public Game() {
 
-        while(true) {
+        while (true) {
             map.mapBuilder(map.mapTemplate1);
             map.PrintMap(objects);
             String input = scan.nextLine();
@@ -37,7 +38,7 @@ public class Game {
     // Move Left
     public boolean MoveLeft(Player gameObject) {
 
-        String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() - 1);        // Get what kind of tile we're stepping on.
+        String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() - 1);         // Get what kind of tile we're stepping on.
 
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
@@ -46,22 +47,26 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
+        map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
+
         return true;
+
     }
 
     //Move Right
     public boolean MoveRight(Player gameObject) {
 
-        String tile = map.ReturnTile(gameObject.getY() , gameObject.getX()+ 1);         // Get what kind of tile we're stepping on.
+        String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() + 1);         // Get what kind of tile we're stepping on.
 
-        if (tile.equals("")){
+        if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
         } else if (tile.equals("W")) {
             System.out.println("That's a wall!");
             return false;
         }
+        map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() + 1); // Move the object's x one step right.
         return true;
     }
@@ -77,6 +82,7 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
+        map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setY(gameObject.getY() - 1); // Move the object's x one step up.
         return true;
     }
@@ -94,6 +100,7 @@ public class Game {
             return false;
         }
 
+        map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setY(gameObject.getY() + 1); // Move the object's x one step down.
         return true;
     }
