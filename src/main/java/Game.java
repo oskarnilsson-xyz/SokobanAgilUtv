@@ -9,29 +9,32 @@ public class Game {
 
     public Game() {
 
-        while (true) {
-            map.mapBuilder(map.mapTemplate1);
-            map.PrintMap(objects);
+        map.mapBuilder(map.mapTemplate1);
+        map.PrintMap(objects);
+
+        while (checkWin(map.mapTemplate1) == false) {
             String input = scan.nextLine();
             switch (input) {
                 case "a":
                     MoveLeft(map.player1);
+                    map.PrintMap(objects);
                     break;
                 case "d":
                     MoveRight(map.player1);
+                    map.PrintMap(objects);
                     break;
                 case "w":
                     MoveUp(map.player1);
+                    map.PrintMap(objects);
                     break;
                 case "s":
                     MoveDown(map.player1);
+                    map.PrintMap(objects);
                     break;
                 default:
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
         }
-
-
     }
 
 
@@ -49,7 +52,6 @@ public class Game {
         }
         map.tempMap[gameObject.getY()][gameObject.getX()] = "."; //Ersätter nuvarande position med en punkt.
         gameObject.setX(gameObject.getX() - 1); // Move the object's x one step left.
-
         return true;
 
     }
@@ -105,4 +107,25 @@ public class Game {
         return true;
     }
 
+
+    public boolean checkWin(String[][] currentMap) { // Victory condition checker
+        //if all goalTiles are covered by boxes = win
+
+        for (int x = 0; x < map.tempMap.length; x++) { //check if goalTile
+            for (int y = 0; y < map.tempMap[x].length; y++) {
+                String tile1 = map.tempMap[y][x];
+                String tile2 = currentMap[y][x];
+                if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
+                    return false;
+                } else if (tile1.equals("P")) {
+                    return false;
+                }
+            }
+        }
+        System.out.println(" __  __            _      ___        __  __  __ ");
+        System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
+        System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
+        System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
+        return true;
+    }
 }
