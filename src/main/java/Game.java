@@ -120,7 +120,7 @@ public class Game {
                 String tile2 = currentMap[y][x];
                 if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
                     return false;
-                } else if (tile1.equals("P")) {
+                } else if (tile1.equals("G")) {
                     return false;
                 }
             }
