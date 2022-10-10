@@ -108,6 +108,7 @@ public class Game {
         return true;
     }
 
+
     public boolean checkWin(String[][] currentMap) { // Victory condition checker
         //if all goalTiles are covered by boxes = win
 
