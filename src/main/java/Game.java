@@ -8,11 +8,11 @@ public class Game {
     Scanner scan = new Scanner(System.in);
 
     public Game() {
-
-        map.mapBuilder(map.mapTemplate1);
+        System.out.println("Du rör din spelare med:\na = vänster\nd = höger\nw = uppåt\ns = nedåt\n\"exit\" avslutar programmet");
+        map.mapBuilder(map.mapTemplate1);  //banan borde vara en variabel som ges av menyvalet
         map.PrintMap(objects);
 
-        while (checkWin(map.mapTemplate1) == false) {
+        while (checkWin(map.mapTemplate1) == false) { //banan borde vara en variabel som ges av menyvalet
             String input = scan.nextLine().trim().toLowerCase();
             switch (input) {
                 case "a":
@@ -31,11 +31,14 @@ public class Game {
                     MoveDown(map.player1);
                     map.PrintMap(objects);
                     break;
+                case "exit":
+                    System.exit(0);
                 default:
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
-        }
     }
+
+}
 
 
     // Move Left
