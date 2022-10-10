@@ -113,12 +113,12 @@ public class Game {
 
         for (int x = 0; x < map.tempMap.length; x++) { //check if goalTile
             for (int y = 0; y < map.tempMap[x].length; y++) {
-                String tile = map.tempMap[y][x];
+                String tile1 = map.tempMap[y][x];
                 String tile2 = currentMap[y][x];
-                if (tile2.equals("G")) {
+                if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
                     return false;
-                } else if (tile.equals("P")) {
-                    return false; //något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
+                } else if (tile1.equals("P")) {
+                    return false;
                 }
             }
         }
