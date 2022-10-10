@@ -130,7 +130,6 @@ public class Map {
             String tile = fromTemplate[y][x];
             if (tile.equals("B")) {
                 Game.objects.add(new Box(y, x));
-                Game.boxes.add(new Box(y, x));
             }
 
         }
