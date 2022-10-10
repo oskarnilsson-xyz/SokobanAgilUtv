@@ -35,8 +35,6 @@ public class Game {
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
         }
-
-
     }
 
 
