@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Game {
     //Player player = new Player();
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    public static ArrayList<GameObject> boxes = new ArrayList<GameObject>();
     Map map = new Map();
     Scanner scan = new Scanner(System.in);
 
@@ -39,7 +40,7 @@ public class Game {
     public boolean MoveLeft(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() - 1);         // Get what kind of tile we're stepping on.
-
+        Integer x = gameObject.getX();
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
@@ -65,7 +66,8 @@ public class Game {
 
     }
 
-    //Move Right
+
+    //Move Right;
     public boolean MoveRight(Player gameObject) {
 
         String tile = map.ReturnTile(gameObject.getY(), gameObject.getX() + 1);         // Get what kind of tile we're stepping on.
