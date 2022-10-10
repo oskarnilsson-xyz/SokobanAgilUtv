@@ -13,7 +13,7 @@ public class Game {
         map.PrintMap(objects);
 
         while (checkWin(map.mapTemplate1) == false) {
-            String input = scan.nextLine();
+            String input = scan.nextLine().trim().toLowerCase();
             switch (input) {
                 case "a":
                     MoveLeft(map.player1);
