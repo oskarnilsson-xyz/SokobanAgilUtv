@@ -2,10 +2,13 @@ import java.util.ArrayList;
 
 public class Map {
 
+
     Player player1 = new Player(5, 5);
-    Player player2 = new Player(7, 2);
+    Player player2 = new Player(7, 2);// Player bör flyttas ut ur Map till en mer passande klass.
     Player player3 = new Player(8, 5);
 
+
+    //Skapar en multidimensionellarray för punktsystemet som ritar ut kartan.
     String[][] map =
             {
                     new String[]{".", ".", ".", ".", ".", ".", ".", ".", ".", "."},
@@ -19,6 +22,7 @@ public class Map {
                     new String[]{".", ".", ".", ".", ".", ".", ".", ".", ".", "."},
                     new String[]{".", ".", ".", ".", ".", ".", ".", ".", ".", "."}
             };
+    //Här kommer den inledande kartan som är spelbar, med tillhörande Box och Goal.
     String[][] mapTemplate1 =
             {
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
@@ -60,13 +64,14 @@ public class Map {
             };
 
 
+    //Skapar en tom multiarray som sedan fylls med kartlayouten.
     String[][] tempMap;
 
     public Map() {
 
     }
 
-    // This function places all my moveable objects on my static map,
+    // This function places all my MapMarkers for my objects on my static map,
     // then prints it.
     public void PrintMap(ArrayList<GameObject> objects) {
         tempMap = map.clone();
@@ -78,6 +83,7 @@ public class Map {
 
     // This function prints a map that is given to it.
     private void PrintMap(String[][] mapToPrint) {
+
         for (int y = 0; y < mapToPrint.length; y++) {
             for (int x = 0; x < mapToPrint[y].length; x++) {
                 System.out.print(mapToPrint[x][y] + " ");
@@ -94,6 +100,7 @@ public class Map {
         return map[x][y];
     }
 
+    // Lägger in ett objekt på Map, beroende vart vilken symbol den har och placerad den på koordinaten.
     public void mapBuilder(String[][] fromTemplate) { // mapTemplate1
 
         for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
@@ -120,6 +127,6 @@ public class Map {
                 }
             }
         }
-        Game.objects.add(player1);
+        Game.objects.add(player1); // Lägger till spelaren (bör nog placeras på annat ställe)
     }
 }

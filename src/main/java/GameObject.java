@@ -1,7 +1,10 @@
 public class GameObject {
+
+    //Implementerar koordinatsystem för vart GameObjects kan ritas ut på kartan.
     protected int x;
     protected int y;
 
+    //Mapmarker definerar hur de olika GameObjecten ritas ut på kartan (P för Player, W för Wall, etc.)
     protected String mapMarker;
 
     public int getX() {
