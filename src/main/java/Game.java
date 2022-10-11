@@ -40,9 +40,8 @@ public class Game {
                 default:
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
+        }
     }
-
-}
 
     // Här beskrivs ytterligare rörelser, hur objekten flyttas i förhållande till Player.
     // Move Left
@@ -68,9 +67,7 @@ public class Game {
                 }
             }
         }
-
         return true;
-
     }
 
     //Move Right;
@@ -120,7 +117,6 @@ public class Game {
                     box.setY(box.getY() - 1);
                 }
             }
-
         }
         return true;
     }
