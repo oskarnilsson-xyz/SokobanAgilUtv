@@ -134,9 +134,7 @@ public class Map {
 
         }
     }
-
-                Game.objects.add(player1);
-
+            Game.objects.add(player1);
 }
 
 
