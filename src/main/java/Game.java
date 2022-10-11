@@ -98,7 +98,7 @@ public class Game {
             if (box instanceof Box) {
                 int boxX = box.getX();
                 int boxY = box.getY();
-                if (boxX == gameObject.getX() && boxY == gameObject.getY()) {
+                if (boxX == player.getX() && boxY == player.getY()) {
                     box.setX(box.getX() + 1);
                 }
             }
@@ -120,7 +120,7 @@ public class Game {
         }
 
         map.tempMap[player.getX()][player.getY()] = ".";    //Ersätter nuvarande position med en punkt.
-        player.setY(gameObject.getY() - 1);                     // Move the object's x one step up.
+        player.setY(player.getY() - 1);                     // Move the object's x one step up.
         for (GameObject box : objects) {                            //Moves box one step up if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
