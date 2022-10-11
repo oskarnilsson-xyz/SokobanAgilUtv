@@ -15,12 +15,13 @@ public class Box extends GameObject {
             return false;
         }*/
         return false; // för att slippa skriva void i funktionen tills vi har implementerat funktionen
+
+    public Box(int x, int y) { //ärver från GameObject och position definieras när objektet skapas
+        super(x, y, "B"); //markör på banan är B och det går inte att gå in i eller igenom boxen
     }
 
     //Skapades inledningvis, men har ingen nuvarande implementation. Kan användas vid framtiden (eller tas bort)
     public boolean isBox() {
         return box;
     }
-
-
 }

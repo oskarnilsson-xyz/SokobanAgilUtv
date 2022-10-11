@@ -14,7 +14,9 @@ public class Game {
         map.mapBuilder(map.mapTemplate1);  // banan borde vara en variasbel som ges av menyvalet
         map.PrintMap(objects);
 
-        while (checkWin(map.mapTemplate1) == false) { // banan borde vara en variabel som ges av menyvalet
+
+        while (!checkWin(map.mapTemplate1)) { //banan borde vara en variabel som ges av menyvalet
+
             String input = scan.nextLine().trim().toLowerCase();
 
             // Här kommer tangentdelegeringen för hur Player styrs på kartan.
@@ -43,11 +45,14 @@ public class Game {
         }
     }
 
+
     // Här beskrivs ytterligare rörelser, hur objekten flyttas i förhållande till Player.
+
     // Move Left
     public boolean MoveLeft(Player player) {
 
-        String tile = map.ReturnTile(player.getY(), player.getX() - 1);         // Get what kind of tile we're stepping on.
+
+        String tile = map.ReturnTile(player.getX() - 1, player.getY());         // Get what kind of tile we're stepping on.
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
@@ -55,25 +60,29 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
-        map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
+
+        map.tempMap[player.getX()][player.getY()] = "."; // Ersätter nuvarande position med en punkt.
         player.setX(player.getX() - 1);// Move the object's x one step left.
+
 
         for (GameObject box : objects) { //Moves box one step to the left if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
                 int boxY = box.getY();
-                if (boxY == player.getY() && boxX == player.getX()) {
+
+                if (boxX == player.getX() && boxY == player.getY()) {
                     box.setX(box.getX() - 1);
                 }
             }
-        }
-        return true;
+        } return true;
+
     }
 
     //Move Right;
     public boolean MoveRight(Player player) {
 
-        String tile = map.ReturnTile(player.getY(), player.getX() + 1);// Get what kind of tile we're stepping on.
+
+        String tile = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
@@ -82,24 +91,26 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
-        map.tempMap[player.getY()][player.getX()] = ".";// Ersätter nuvarande position med en punkt.
+
+        map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
         player.setX(player.getX() + 1); // Move the object's x one step right.
-        for (GameObject box : objects) {// Moves box one step to the right if it has the same position as the players new position
+        for (GameObject box : objects) { //Moves box one step to the right if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
                 int boxY = box.getY();
-                if (boxY == player.getY() && boxX == player.getX()) {
+                if (boxX == gameObject.getX() && boxY == gameObject.getY()) {
                     box.setX(box.getX() + 1);
                 }
             }
-        }
-        return true;
+        } return true;
     }
 
     //Move Up -Upp i Y led = minus 1
     public boolean MoveUp(Player player) {
 
-        String tile = map.ReturnTile(player.getY() - 1, player.getX());// Get what kind of tile we're stepping on.
+
+        String tile = map.ReturnTile(player.getX(), player.getY() - 1);         // Get what kind of tile we're stepping on.
+
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
@@ -107,24 +118,25 @@ public class Game {
             System.out.println("That's a wall!");
             return false;
         }
-        map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
-        player.setY(player.getY() - 1); // Move the object's x one step up.
-        for (GameObject box : objects) { //Moves box one step up if it has the same position as the players new position
+
+        map.tempMap[player.getX()][player.getY()] = ".";    //Ersätter nuvarande position med en punkt.
+        player.setY(gameObject.getY() - 1);                     // Move the object's x one step up.
+        for (GameObject box : objects) {                            //Moves box one step up if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
                 int boxY = box.getY();
-                if (boxY == player.getY() && boxX == player.getX()) {
+                if (boxX == player.getX() && boxY == player.getY()) {
                     box.setY(box.getY() - 1);
                 }
             }
-        }
-        return true;
+        } return true;
     }
 
     //Move Down -Ner i Y led = plus 1
     public boolean MoveDown(Player player) {
 
-        String tile = map.ReturnTile(player.getY() + 1, player.getX());// Get what kind of tile we're stepping on.
+
+        String tile = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
 
         if (tile.equals("")) {
             System.out.println("That's out of bounds!");
@@ -134,13 +146,15 @@ public class Game {
             return false;
         }
 
-        map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
+
+        map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() + 1); // Move the object's x one step down.
+
         for (GameObject box : objects) { //Moves box one step down if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
                 int boxY = box.getY();
-                if (boxY == player.getY() && boxX == player.getX()) {
+                if (boxX == player.getX() && boxY == player.getY()) {
                     box.setY(box.getY() + 1);
                 }
             }
@@ -153,9 +167,9 @@ public class Game {
 
         for (int x = 0; x < map.tempMap.length; x++) { // check if goalTile
             for (int y = 0; y < map.tempMap[x].length; y++) {
-                String tile1 = map.tempMap[y][x];
-                String tile2 = currentMap[y][x];
-                if (tile2.equals("G") && tile1.equals("P")) {// något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
+                String tile1 = map.tempMap[x][y];
+                String tile2 = currentMap[x][y];
+                if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
                     return false;
                 } else if (tile1.equals("G")) {
                     return false;

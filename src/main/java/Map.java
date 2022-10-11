@@ -2,9 +2,11 @@ import java.util.ArrayList;
 
 public class Map {
 
-    Player player1 = new Player(5, 5); // Player bör flyttas ut ur Map till en mer passande klass.
-    Player player2 = new Player(2, 7);
-    Player player3 = new Player(5, 8);
+
+    Player player1 = new Player(5, 5);
+    Player player2 = new Player(7, 2);// Player bör flyttas ut ur Map till en mer passande klass.
+    Player player3 = new Player(8, 5);
+
 
     //Skapar en multidimensionellarray för punktsystemet som ritar ut kartan.
     String[][] map =
@@ -61,10 +63,12 @@ public class Map {
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"}
             };
 
+
     //Skapar en tom multiarray som sedan fylls med kartlayouten.
     String[][] tempMap;
 
     public Map() {
+
     }
 
     // This function places all my MapMarkers for my objects on my static map,
@@ -72,15 +76,16 @@ public class Map {
     public void PrintMap(ArrayList<GameObject> objects) {
         tempMap = map.clone();
         for (GameObject obj : objects) {
-            tempMap[obj.getY()][obj.getX()] = obj.getMapMarker();
+            tempMap[obj.getX()][obj.getY()] = obj.getMapMarker();
         }
         PrintMap(tempMap);
     }
 
     // This function prints a map that is given to it.
     private void PrintMap(String[][] mapToPrint) {
-        for (int x = 0; x < mapToPrint.length; x++) {
-            for (int y = 0; y < mapToPrint[x].length; y++) {
+
+        for (int y = 0; y < mapToPrint.length; y++) {
+            for (int x = 0; x < mapToPrint[y].length; x++) {
                 System.out.print(mapToPrint[x][y] + " ");
             }
             System.out.println();
@@ -88,7 +93,7 @@ public class Map {
     }
 
     // Returns what kind of tile it is via an x and y value.
-    public String ReturnTile(int y, int x) {
+    public String ReturnTile(int x, int y) {
         if (x < 0 || y < 0 || y > map[y].length || x > map.length) {
             return "";
         }
@@ -97,27 +102,28 @@ public class Map {
 
     // Lägger in ett objekt på Map, beroende vart vilken symbol den har och placerad den på koordinaten.
     public void mapBuilder(String[][] fromTemplate) { // mapTemplate1
-        for (int x = 0; x < fromTemplate.length; x++) { //Make Walls
-            for (int y = 0; y < fromTemplate[x].length; y++) {
-                String tile = fromTemplate[y][x];
+
+        for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
+            for (int x = 0; x < fromTemplate[y].length; x++) {
+                String tile = fromTemplate[x][y];
                 if (tile.equals("W")) {
-                    Game.objects.add(new Wall(y, x));
+                    Game.objects.add(new Wall(x, y));
                 }
             }
         }
-        for (int x = 0; x < fromTemplate.length; x++) { //Make goal
-            for (int y = 0; y < fromTemplate[x].length; y++) {
-                String tile = fromTemplate[y][x];
+        for (int y = 0; y < fromTemplate.length; y++) { //Make goal
+            for (int x = 0; x < fromTemplate[y].length; x++) {
+                String tile = fromTemplate[x][y];
                 if (tile.equals("G")) {
-                    Game.objects.add(new GoalTile(y, x));
+                    Game.objects.add(new GoalTile(x, y));
                 }
             }
         }
-        for (int x = 0; x < fromTemplate.length; x++) {//Make Box
-            for (int y = 0; y < fromTemplate[x].length; y++) {
-                String tile = fromTemplate[y][x];
+        for (int y = 0; y < fromTemplate.length; y++) {//Make Box
+            for (int x = 0; x < fromTemplate[y].length; x++) {
+                String tile = fromTemplate[x][y];
                 if (tile.equals("B")) {
-                    Game.objects.add(new Box(y, x));
+                    Game.objects.add(new Box(x, y));
                 }
             }
         }
