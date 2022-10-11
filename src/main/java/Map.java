@@ -74,7 +74,6 @@ public class Map {
         for (GameObject obj : objects) {
             tempMap[obj.getY()][obj.getX()] = obj.getMapMarker();
         }
-
         PrintMap(tempMap);
     }
 
