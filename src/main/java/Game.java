@@ -14,7 +14,7 @@ public class Game {
         map.mapBuilder(map.mapTemplate1);  // banan borde vara en variasbel som ges av menyvalet
         map.PrintMap(objects);
 
-        while (checkWin(map.mapTemplate1) == false) { //banan borde vara en variabel som ges av menyvalet
+        while (checkWin(map.mapTemplate1) == false) { // banan borde vara en variabel som ges av menyvalet
             String input = scan.nextLine().trim().toLowerCase();
 
             // Här kommer tangentdelegeringen för hur Player styrs på kartan.
@@ -72,7 +72,6 @@ public class Game {
         return true;
 
     }
-
 
     //Move Right;
     public boolean MoveRight(Player player) {
@@ -145,23 +144,22 @@ public class Game {
             if (box instanceof Box) {
                 int boxX = box.getX();
                 int boxY = box.getY();
-                if (boxY == gameObject.getY() && boxX == gameObject.getX()) {
-                    box.setY(box.getX() + 1);
+                if (boxY == player.getY() && boxX == player.getX()) {
+                    box.setY(box.getY() + 1);
                 }
             }
         }
         return true;
     }
 
-
     public boolean checkWin(String[][] currentMap) { // Victory condition checker
-        //if all goalTiles are covered by boxes = win
+        // if all goalTiles are covered by boxes = win
 
-        for (int x = 0; x < map.tempMap.length; x++) { //check if goalTile
+        for (int x = 0; x < map.tempMap.length; x++) { // check if goalTile
             for (int y = 0; y < map.tempMap[x].length; y++) {
                 String tile1 = map.tempMap[y][x];
                 String tile2 = currentMap[y][x];
-                if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
+                if (tile2.equals("G") && tile1.equals("P")) {// något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
                     return false;
                 } else if (tile1.equals("G")) {
                     return false;
