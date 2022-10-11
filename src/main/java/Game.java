@@ -62,10 +62,7 @@ public class Game {
                     box.setX(box.getX() - 1);
                 }
             }
-        }
-
-        return true;
-
+        } return true;
     }
 
 
@@ -91,8 +88,7 @@ public class Game {
                     box.setX(box.getX() + 1);
                 }
             }
-        }
-        return true;
+        } return true;
     }
 
     //Move Up -Upp i Y led = minus 1
