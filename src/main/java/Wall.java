@@ -2,8 +2,8 @@ public class Wall extends GameObject {
 
     protected boolean wall = true;
 
-    public Wall(int y, int x) {
-        super(y, x, "W");
+    public Wall(int x, int y) {
+        super(x, y, "W");
 
     }
 
