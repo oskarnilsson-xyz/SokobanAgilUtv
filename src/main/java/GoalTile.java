@@ -7,16 +7,6 @@ public class GoalTile extends GameObject{
 
     }
 
-    public boolean isWin() { //kan anropas av funktion som kollar om det finns någon goalTile kvar
-        /*if (står box på alla goalTiles){
-            return true;
-        }
-        else {
-            return false;
-        }*/
-        return false; // för att slippa skriva void i funktionen tills vi har implementerat funktionen
-    }
-
     public boolean isGoalTile() {
         return goalTile;
     }
