@@ -7,6 +7,7 @@ public class Wall extends GameObject {
 
     }
 
+    //Skapades inledningvis, men har ingen nuvarande implementation. Kan användas vid framtiden (eller tas bort)
     public boolean isWall() {
         return wall;
     }
