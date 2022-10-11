@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Map {
 
-    Player player1 = new Player(5,5);
-    Player player2 = new Player(2, 7);
-    Player player3 = new Player (5, 8);
+    Player player1 = new Player(5, 5);
+    Player player2 = new Player(7, 2);
+    Player player3 = new Player(8, 5);
 
     String[][] map =
             {
