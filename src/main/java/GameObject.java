@@ -1,8 +1,11 @@
 public class GameObject {
-    private int x;
-    private int y;
 
-    private String mapMarker;
+    //Implementerar koordinatsystem för vart GameObjects kan ritas ut på kartan.
+    protected int x;
+    protected int y;
+
+    //Mapmarker definerar hur de olika GameObjecten ritas ut på kartan (P för Player, W för Wall, etc.)
+    protected String mapMarker;
 
     public int getX() {
         return x;
@@ -28,8 +31,8 @@ public class GameObject {
         this.mapMarker = mapMarker;
     }
 
-    public GameObject(int x, int y, String mapMarker)
-    {
+
+    public GameObject(int x, int y, String mapMarker) {
         this.x = x;
         this.y = y;
         this.mapMarker = mapMarker;
