@@ -27,14 +27,17 @@ public class Game {
                     break;
                 case "d":
                     MoveRight(map.player1);
+                    enemyMove(map.enemy1);
                     map.PrintMap(objects);
                     break;
                 case "w":
                     MoveUp(map.player1);
+                    enemyMove(map.enemy1);
                     map.PrintMap(objects);
                     break;
                 case "s":
                     MoveDown(map.player1);
+                    enemyMove(map.enemy1);
                     map.PrintMap(objects);
                     break;
                 case "exit":
