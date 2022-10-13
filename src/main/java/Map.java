@@ -26,11 +26,11 @@ public class Map {
     String[][] mapTemplate1 =
             {
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
-                    new String[]{"W", ".", ".", ".", "B", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", "B", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", "B", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", "W", ".", ".", ".", ".", ".", "W", "W", "W"},
-                    new String[]{"W", ".", ".", "B", "B", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", "G", ".", ".", ".", ".", "W"},
@@ -84,15 +84,15 @@ public class Map {
     // This function prints a map that is given to it.
     private void PrintMap(String[][] mapToPrint) {
 
-        for (int x = 0; x < mapToPrint.length; x++) {
-            for (int y = 0; y < mapToPrint[x].length; y++) {
-                System.out.print(mapToPrint[y][x] + " ");
+        for (int y = 0; y < mapToPrint.length; y++) {
+            for (int x = 0; x < mapToPrint[y].length; x++) {
+                System.out.print(mapToPrint[x][y] + " ");
             }
             System.out.println();
         }
     }
 
-    // Returns what kind of tile it is via an x and y value.
+    // Returns what kind of tile it is via an x and y value
     public String ReturnTile(int x, int y) {
         if (x < 0 || y < 0 || y > map[y].length || x > map.length) {
             return "";
@@ -105,7 +105,7 @@ public class Map {
 
         for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
             for (int x = 0; x < fromTemplate[y].length; x++) {
-                String tile = fromTemplate[x][y];
+                String tile = fromTemplate[y][x];
                 if (tile.equals("W")) {
                     Game.objects.add(new Wall(x, y));
                 }
@@ -113,7 +113,7 @@ public class Map {
         }
         for (int y = 0; y < fromTemplate.length; y++) { //Make goal
             for (int x = 0; x < fromTemplate[y].length; x++) {
-                String tile = fromTemplate[x][y];
+                String tile = fromTemplate[y][x];
                 if (tile.equals("G")) {
                     Game.objects.add(new GoalTile(x, y));
                 }
@@ -121,7 +121,7 @@ public class Map {
         }
         for (int y = 0; y < fromTemplate.length; y++) {//Make Box
             for (int x = 0; x < fromTemplate[y].length; x++) {
-                String tile = fromTemplate[x][y];
+                String tile = fromTemplate[y][x];
                 if (tile.equals("B")) {
                     Game.objects.add(new Box(x, y));
                 }
