@@ -23,6 +23,7 @@ public class Game {
             switch (input) {
                 case "a":
                     MoveLeft(map.player1);
+                    enemyMove(map.enemy1);
                     map.PrintMap(objects);
                     break;
                 case "d":
