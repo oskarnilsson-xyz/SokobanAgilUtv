@@ -26,14 +26,14 @@ public class Map {
     String[][] mapTemplate1 =
             {
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", "G", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", "B", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", "W", ".", ".", ".", ".", ".", "W", "W", "W"},
+                    new String[]{"W", ".", ".", "B", "B", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", ".", ".", "G", ".", ".", ".", ".", "W"},
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"}
             };
     String[][] mapTemplate2 =
@@ -84,9 +84,9 @@ public class Map {
     // This function prints a map that is given to it.
     private void PrintMap(String[][] mapToPrint) {
 
-        for (int y = 0; y < mapToPrint.length; y++) {
-            for (int x = 0; x < mapToPrint[y].length; x++) {
-                System.out.print(mapToPrint[x][y] + " ");
+        for (int x = 0; x < mapToPrint.length; x++) {
+            for (int y = 0; y < mapToPrint[x].length; y++) {
+                System.out.print(mapToPrint[y][x] + " ");
             }
             System.out.println();
         }
