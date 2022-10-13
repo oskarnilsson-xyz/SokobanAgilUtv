@@ -128,5 +128,6 @@ public class Map {
             }
         }
         Game.objects.add(player1); // Lägger till spelaren (bör nog placeras på annat ställe)
+        Game.objects.add(enemy1); // Lägger till fienden (bör nog placeras på annat ställe)
     }
 }
