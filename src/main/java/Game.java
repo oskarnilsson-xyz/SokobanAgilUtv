@@ -89,8 +89,6 @@ public class Game {
 
     //Move Right;
     public boolean MoveRight(Player player) {
-
-
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
 
@@ -184,8 +182,8 @@ public class Game {
     public void enemyMove(Enemy enemy) {
         Random randXY = new Random();
         String[] array1 = {"x", "y"};
-        String rXY = String.valueOf(randXY.nextInt(array1.length));
-        switch (rXY) {
+        int rXY = randXY.nextInt(array1.length);
+        switch (array1[rXY]) {
             case "x":  //är likamed x kör x led
                 eMoveX(map.enemy1);
                 map.PrintMap(objects);
@@ -200,7 +198,7 @@ public class Game {
     // Move X
     public boolean eMoveX(Enemy enemy) {
         int rX = randX.nextInt(array2.length);
-        String tile = map.ReturnTile(enemy.getX() + rX, enemy.getY());
+        String tile = map.ReturnTile(enemy.getX() + Integer.parseInt(array2[rX]), enemy.getY());
         if (tile.equals("")) {
             return false;
         } else if (tile.equals("W")) {
@@ -209,14 +207,14 @@ public class Game {
             return false;
         }
         map.tempMap[enemy.getX()][enemy.getY()] = ".";
-        enemy.setX(enemy.getX() + rX);
+        enemy.setX(enemy.getX() + Integer.parseInt(array2[rX]));
         return true;
     }
 
     //Move Y
     public boolean eMoveY(Enemy enemy) {
         int rY = randY.nextInt(array2.length);
-        String tile = map.ReturnTile(enemy.getX(), enemy.getY() + rY);
+        String tile = map.ReturnTile(enemy.getX(), enemy.getY() + Integer.parseInt(array2[rY]));
 
         if (tile.equals("")) {
             return false;
@@ -226,7 +224,7 @@ public class Game {
             return false;
         }
         map.tempMap[enemy.getX()][enemy.getY()] = ".";
-        enemy.setY(enemy.getY() + rY);
+        enemy.setY(enemy.getY() + Integer.parseInt(array2[rY]));
         return true;
     }
 
