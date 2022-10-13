@@ -45,5 +45,9 @@ public class Enemy extends GameObject {
         map.tempMap[enemy.getX()][enemy.getY()] = "."; //Ersätter nuvarande position med en punkt.
         enemy.setY(enemy.getY() + 1); // Move the object's x one step down.
         return true;
-    }
-}
+
+                for (int i = 0; i < 1; y++) {
+            for (int j = 0; j < 1; x++) {
+            }
+        }
+     */
