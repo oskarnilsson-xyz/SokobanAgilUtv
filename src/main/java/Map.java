@@ -77,7 +77,7 @@ public class Map {
     public void PrintMap(ArrayList<GameObject> objects) {
         tempMap = map.clone();
         for (GameObject obj : objects) {
-            tempMap[obj.getX()][obj.getY()] = obj.getMapMarker();
+            tempMap[obj.getY()][obj.getX()] = obj.getMapMarker();
         }
         PrintMap(tempMap);
     }
@@ -87,7 +87,7 @@ public class Map {
 
         for (int y = 0; y < mapToPrint.length; y++) {
             for (int x = 0; x < mapToPrint[y].length; x++) {
-                System.out.print(mapToPrint[x][y] + " ");
+                System.out.print(mapToPrint[y][x] + " ");
             }
             System.out.println();
         }
@@ -98,7 +98,7 @@ public class Map {
         if (x < 0 || y < 0 || y > map[y].length || x > map.length) {
             return "";
         }
-        return map[x][y];
+        return map[y][x];
     }
 
     // Lägger in ett objekt på Map, beroende vart vilken symbol den har och placerad den på koordinaten.
