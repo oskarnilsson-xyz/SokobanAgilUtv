@@ -37,8 +37,4 @@ public class GameObject {
         this.y = y;
         this.mapMarker = mapMarker;
     }
-    public GameObject(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 }
