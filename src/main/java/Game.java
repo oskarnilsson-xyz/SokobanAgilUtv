@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan.
+    // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan. aa
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
     // Skapar kartan från Map-klassen och ritar ut den.
     Map map = new Map();
@@ -52,20 +52,26 @@ public class Game {
     public boolean MoveLeft(Player player) {
 
 
+
         String tile1 = map.ReturnTile(player.getX() - 1, player.getY());         // Get what kind of tile we're stepping on.
         if (tile1.equals("")) {
+
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile1.equals("W")) {
+        } else if (tile.equals("W")) {
             System.out.println("That's a wall!");
             return false;
+
         }
         String tile2 = map.ReturnTile(player.getX() - 2, player.getY());        //Kollar 2 tiles fram
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
             return false;
+
         }
+
         map.tempMap[player.getX()][player.getY()] = "."; // Ersätter nuvarande position med en punkt.
         player.setX(player.getX() - 1);// Move the object's x one step left.
+
 
         for (GameObject box : objects) { //Moves box one step to the left if it has the same position as the players new position
             if (box instanceof Box) {
@@ -76,8 +82,7 @@ public class Game {
                     box.setX(box.getX() - 1);
                 }
             }
-        }
-        return true;
+        } return true;
 
     }
 
@@ -85,20 +90,24 @@ public class Game {
     public boolean MoveRight(Player player) {
 
 
+
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
-        if (tile1.equals("")) {
+
+        if (tile.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile1.equals("W")) {
+        } else if (tile.equals("W")) {
             System.out.println("That's a wall!");
             return false;
         }
+
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
             return false;
         }
+
         map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
         player.setX(player.getX() + 1); // Move the object's x one step right.
         for (GameObject box : objects) { //Moves box one step to the right if it has the same position as the players new position
@@ -109,8 +118,10 @@ public class Game {
                     box.setX(box.getX() + 1);
                 }
             }
+
         }
         return true;
+
     }
 
     //Move Up -Upp i Y led = minus 1
@@ -132,6 +143,7 @@ public class Game {
             return false;
         }
 
+
         map.tempMap[player.getX()][player.getY()] = ".";    //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() - 1);                     // Move the object's x one step up.
         for (GameObject box : objects) {                            //Moves box one step up if it has the same position as the players new position
@@ -142,12 +154,15 @@ public class Game {
                     box.setY(box.getY() - 1);
                 }
             }
+
         }
         return true;
+
     }
 
     //Move Down -Ner i Y led = plus 1
     public boolean MoveDown(Player player) {
+
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
@@ -164,6 +179,7 @@ public class Game {
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
             return false;
         }
+
 
 
         map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
@@ -201,4 +217,6 @@ public class Game {
         System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
         return true;
     }
+
 }
+
