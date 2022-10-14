@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,13 +16,14 @@ public class Game {
 
 
 
-    public Game() {
+    public void  Game() {
         System.out.println("Du rör din spelare med:\na = vänster\nd = höger\nw = uppåt\ns = nedåt\n\"exit\" avslutar programmet");
         map.mapBuilder(map.mapTemplate1);  // banan borde vara en variasbel som ges av menyvalet
         map.PrintMap(objects);
 
 
-        while (!checkWin(map.mapTemplate1)) { //banan borde vara en variabel som ges av menyvalet
+
+        while (!checkWin(map.mapTemplate1) && !death(map.player1, map.enemy1)) { //banan borde vara en variabel som ges av menyvalet
 
             String input = scan.nextLine().trim().toLowerCase();
 
@@ -53,6 +55,9 @@ public class Game {
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
         }
+        objectArrayClear();
+        Game game = new Game();
+        game.Game();
     }
 
 
@@ -260,7 +265,22 @@ public class Game {
         enemy.setY(enemy.getY() + Integer.parseInt(array2[rY]));
         return true;
     }
+    public boolean death(Player player1, Enemy enemy1){ //saknar flera fiender?
 
+        if((player1.getX() == enemy1.getX()) && (player1.getY() == enemy1.getY())){ //Compares enemy tile with player tile and returns true or false
+            System.out.println("You are dead!");
+            return true;
+        }
+
+        return false;
+    }
+    public void objectArrayClear(){ // Tar bort alla object i listan GameObjects.
+        int list = objects.size();
+        for(int y = 0; y < list; y++){
+            objects.remove(0);
+        }
+
+    }
 
     public boolean checkWin(String[][] currentMap) { // Victory condition checker
         // if all goalTiles are covered by boxes = win

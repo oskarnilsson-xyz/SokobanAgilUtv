@@ -8,6 +8,7 @@ public class Map {
     Player player3 = new Player(8, 5);
     Enemy enemy1 = new Enemy(4, 3);
 
+
     //Skapar en multidimensionellarray för punktsystemet som ritar ut kartan.
     String[][] map =
             {
