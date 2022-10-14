@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan.
+    // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan. aa
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
     // Skapar kartan från Map-klassen och ritar ut den.
     Map map = new Map();
