@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,13 +13,15 @@ public class Game {
     Random randY = new Random();
     String[] array2 = {"-1", "1"};
 
+    public void flush() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
-
-    public void  Game() {
+    public void Game() {
         System.out.println("Du rör din spelare med:\na = vänster\nd = höger\nw = uppåt\ns = nedåt\n\"exit\" avslutar programmet");
         map.mapBuilder(map.mapTemplate1);  // banan borde vara en variasbel som ges av menyvalet
         map.PrintMap(objects);
-
 
 
         while (!checkWin(map.mapTemplate1) && !death(map.player1, map.enemy1)) { //banan borde vara en variabel som ges av menyvalet
@@ -32,21 +33,25 @@ public class Game {
                 case "a":
                     MoveLeft(map.player1);
                     enemyMove(map.enemy1);
+                    flush();
                     map.PrintMap(objects);
                     break;
                 case "d":
                     MoveRight(map.player1);
                     enemyMove(map.enemy1);
+                    flush();
                     map.PrintMap(objects);
                     break;
                 case "w":
                     MoveUp(map.player1);
                     enemyMove(map.enemy1);
+                    flush();
                     map.PrintMap(objects);
                     break;
                 case "s":
                     MoveDown(map.player1);
                     enemyMove(map.enemy1);
+                    flush();
                     map.PrintMap(objects);
                     break;
                 case "exit":
@@ -96,7 +101,8 @@ public class Game {
                 }
             }
 
-        } return true;
+        }
+        return true;
 
 
     }
@@ -183,7 +189,6 @@ public class Game {
     public boolean MoveDown(Player player) {
 
 
-
         String tile1 = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
 
         if (tile1.equals("")) {
@@ -265,26 +270,28 @@ public class Game {
         enemy.setY(enemy.getY() + Integer.parseInt(array2[rY]));
         return true;
     }
-    public boolean death(Player player1, Enemy enemy1){ //saknar flera fiender?
 
-        if((player1.getX() == enemy1.getX()) && (player1.getY() == enemy1.getY())){ //Compares enemy tile with player tile and returns true or false
+    public boolean death(Player player1, Enemy enemy1) { //saknar flera fiender?
+
+        if ((player1.getX() == enemy1.getX()) && (player1.getY() == enemy1.getY())) { //Compares enemy tile with player tile and returns true or false
             System.out.println("You are dead!");
             return true;
         }
 
         return false;
     }
-    public void objectArrayClear(){ // Tar bort alla object i listan GameObjects.
+
+    public void objectArrayClear() { // Tar bort alla object i listan GameObjects.
         int list = objects.size();
-        for(int y = 0; y < list; y++){
+        for (int y = 0; y < list; y++) {
             objects.remove(0);
         }
 
     }
 
     public boolean checkWin(String[][] currentMap) {
-        for(int y = 0; y < this.map.tempMap.length; ++y) {
-            for(int x = 0; x < this.map.tempMap[y].length; ++x) {
+        for (int y = 0; y < this.map.tempMap.length; ++y) {
+            for (int x = 0; x < this.map.tempMap[y].length; ++x) {
                 String actMap = this.map.tempMap[y][x];
                 String pasMap = currentMap[y][x];
                 if (pasMap.equals("G") && actMap.equals("B")) {
