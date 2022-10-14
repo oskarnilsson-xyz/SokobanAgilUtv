@@ -58,7 +58,7 @@ public class Game {
 
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile.equals("W")) {
+        } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
             return false;
 
@@ -94,10 +94,10 @@ public class Game {
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
 
-        if (tile.equals("")) {
+        if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile.equals("W")) {
+        } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
             return false;
         }
