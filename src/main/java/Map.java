@@ -6,7 +6,7 @@ public class Map {
     Player player1 = new Player(5, 5);
     Player player2 = new Player(7, 2);// Player bör flyttas ut ur Map till en mer passande klass.
     Player player3 = new Player(8, 5);
-
+    Enemy enemy1 = new Enemy(4, 3);
 
     //Skapar en multidimensionellarray för punktsystemet som ritar ut kartan.
     String[][] map =
@@ -128,5 +128,6 @@ public class Map {
             }
         }
         Game.objects.add(player1); // Lägger till spelaren (bör nog placeras på annat ställe)
+        Game.objects.add(enemy1); // Lägger till fienden (bör nog placeras på annat ställe)
     }
 }
