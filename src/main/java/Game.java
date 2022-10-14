@@ -13,11 +13,6 @@ public class Game {
     Random randY = new Random();
     String[] array2 = {"-1", "1"};
 
-    public void flush() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     public void Game() {
         System.out.println("Du rör din spelare med:\na = vänster\nd = höger\nw = uppåt\ns = nedåt\n\"exit\" avslutar programmet");
         map.mapBuilder(map.mapTemplate1);  // banan borde vara en variasbel som ges av menyvalet
@@ -33,25 +28,21 @@ public class Game {
                 case "a":
                     MoveLeft(map.player1);
                     enemyMove(map.enemy1);
-                    flush();
                     map.PrintMap(objects);
                     break;
                 case "d":
                     MoveRight(map.player1);
                     enemyMove(map.enemy1);
-                    flush();
                     map.PrintMap(objects);
                     break;
                 case "w":
                     MoveUp(map.player1);
                     enemyMove(map.enemy1);
-                    flush();
                     map.PrintMap(objects);
                     break;
                 case "s":
                     MoveDown(map.player1);
                     enemyMove(map.enemy1);
-                    flush();
                     map.PrintMap(objects);
                     break;
                 case "exit":
