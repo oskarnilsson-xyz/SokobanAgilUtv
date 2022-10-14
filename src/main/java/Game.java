@@ -77,7 +77,7 @@ public class Game {
 
         }
 
-        map.tempMap[player.getX()][player.getY()] = "."; // Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
         player.setX(player.getX() - 1);// Move the object's x one step left.
 
 
@@ -118,7 +118,7 @@ public class Game {
         }
 
 
-        map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
         player.setX(player.getX() + 1); // Move the object's x one step right.
         for (GameObject box : objects) { //Moves box one step to the right if it has the same position as the players new position
             if (box instanceof Box) {
@@ -156,7 +156,7 @@ public class Game {
         }
 
 
-        map.tempMap[player.getX()][player.getY()] = ".";    //Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = ".";    //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() - 1);                     // Move the object's x one step up.
         for (GameObject box : objects) {                            //Moves box one step up if it has the same position as the players new position
             if (box instanceof Box) {
@@ -195,7 +195,7 @@ public class Game {
         }
 
 
-        map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() + 1); // Move the object's x one step down.
 
 
@@ -239,7 +239,7 @@ public class Game {
         } else if (tile.equals("B")) {
             return false;
         }
-        map.tempMap[enemy.getX()][enemy.getY()] = ".";
+        map.tempMap[enemy.getY()][enemy.getX()] = ".";
         enemy.setX(enemy.getX() + Integer.parseInt(array2[rX]));
         return true;
     }
@@ -256,32 +256,26 @@ public class Game {
         } else if (tile.equals("B")) {
             return false;
         }
-        map.tempMap[enemy.getX()][enemy.getY()] = ".";
+        map.tempMap[enemy.getY()][enemy.getX()] = ".";
         enemy.setY(enemy.getY() + Integer.parseInt(array2[rY]));
         return true;
     }
 
-
-    public boolean checkWin(String[][] currentMap) { // Victory condition checker
-        // if all goalTiles are covered by boxes = win
-
-        for (int x = 0; x < map.tempMap.length; x++) { // check if goalTile
-            for (int y = 0; y < map.tempMap[x].length; y++) {
-                String tile1 = map.tempMap[x][y];
-                String tile2 = currentMap[x][y];
-                if (tile2.equals("G") && tile1.equals("P")) {//något annat än B står på G (just nu enbart P) Uppdatera när vi lägger till fler object på map
-                    return false;
-                } else if (tile1.equals("G")) {
-                    return false;
+    public boolean checkWin(String[][] currentMap) {
+        for(int y = 0; y < this.map.tempMap.length; ++y) {
+            for(int x = 0; x < this.map.tempMap[y].length; ++x) {
+                String actMap = this.map.tempMap[y][x];
+                String pasMap = currentMap[y][x];
+                if (pasMap.equals("G") && actMap.equals("B")) {
+                    System.out.println(" __  __            _      ___        __  __  __ ");
+                    System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
+                    System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
+                    System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
+                    return true;
                 }
             }
         }
-        System.out.println(" __  __            _      ___        __  __  __ ");
-        System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
-        System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
-        System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
-        return true;
+        return false;
     }
-
 }
 
