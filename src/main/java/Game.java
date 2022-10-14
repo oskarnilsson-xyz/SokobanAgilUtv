@@ -77,7 +77,7 @@ public class Game {
 
         }
 
-        map.tempMap[player.getX()][player.getY()] = "."; // Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
         player.setX(player.getX() - 1);// Move the object's x one step left.
 
 
@@ -118,7 +118,7 @@ public class Game {
         }
 
 
-        map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
         player.setX(player.getX() + 1); // Move the object's x one step right.
         for (GameObject box : objects) { //Moves box one step to the right if it has the same position as the players new position
             if (box instanceof Box) {
@@ -156,7 +156,7 @@ public class Game {
         }
 
 
-        map.tempMap[player.getX()][player.getY()] = ".";    //Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = ".";    //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() - 1);                     // Move the object's x one step up.
         for (GameObject box : objects) {                            //Moves box one step up if it has the same position as the players new position
             if (box instanceof Box) {
@@ -195,7 +195,7 @@ public class Game {
         }
 
 
-        map.tempMap[player.getX()][player.getY()] = "."; //Ersätter nuvarande position med en punkt.
+        map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() + 1); // Move the object's x one step down.
 
 
@@ -239,7 +239,7 @@ public class Game {
         } else if (tile.equals("B")) {
             return false;
         }
-        map.tempMap[enemy.getX()][enemy.getY()] = ".";
+        map.tempMap[enemy.getY()][enemy.getX()] = ".";
         enemy.setX(enemy.getX() + Integer.parseInt(array2[rX]));
         return true;
     }
@@ -256,7 +256,7 @@ public class Game {
         } else if (tile.equals("B")) {
             return false;
         }
-        map.tempMap[enemy.getX()][enemy.getY()] = ".";
+        map.tempMap[enemy.getY()][enemy.getX()] = ".";
         enemy.setY(enemy.getY() + Integer.parseInt(array2[rY]));
         return true;
     }
