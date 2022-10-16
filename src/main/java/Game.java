@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan. aa
+    // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan.
     public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
     // Skapar kartan från Map-klassen och ritar ut den.
     Map map = new Map();
@@ -12,38 +12,51 @@ public class Game {
     Random randX = new Random();
     Random randY = new Random();
     String[] array2 = {"-1", "1"};
+    Integer stepCount = 0;
 
-    public void Game() {
-        System.out.println("Du rör din spelare med:\na = vänster\nd = höger\nw = uppåt\ns = nedåt\n\"exit\" avslutar programmet");
-        map.mapBuilder(map.mapTemplate1);  // banan borde vara en variasbel som ges av menyvalet
+    Boolean backToStart = false;
+
+    Player player;
+    Enemy enemy;
+    String[][] mapTemplate;
+    public Game() {
+    }
+
+    public void gameOn(String[][] mapTemplate, Player player, Enemy enemy) {
+        System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\"exit\" ends the game");
+        map.mapBuilder(mapTemplate, player, enemy);  // banan är en variasbel som ges av menyvalet
         map.PrintMap(objects);
 
 
-        while (!checkWin(map.mapTemplate1) && !death(map.player1, map.enemy1)) { //banan borde vara en variabel som ges av menyvalet
+        while (!backToStart && (!checkWin(mapTemplate) && !death(player, enemy))) {  //banan är en variabel som ges av menyvalet
 
             String input = scan.nextLine().trim().toLowerCase();
 
             // Här kommer tangentdelegeringen för hur Player styrs på kartan.
+
             switch (input) {
                 case "a":
-                    MoveLeft(map.player1);
-                    enemyMove(map.enemy1);
+                    moveLeft(player);
+                    enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "d":
-                    MoveRight(map.player1);
-                    enemyMove(map.enemy1);
+                    moveRight(player);
+                    enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "w":
-                    MoveUp(map.player1);
-                    enemyMove(map.enemy1);
+                    moveUp(player);
+                    enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "s":
-                    MoveDown(map.player1);
-                    enemyMove(map.enemy1);
+                    moveDown(player);
+                    enemyMove(enemy);
                     map.PrintMap(objects);
+                    break;
+                case "return":
+                    backToStart = true;
                     break;
                 case "exit":
                     System.exit(0);
@@ -52,15 +65,13 @@ public class Game {
             }
         }
         objectArrayClear();
-        Game game = new Game();
-        game.Game();
     }
 
 
     // Här beskrivs ytterligare rörelser, hur objekten flyttas i förhållande till Player.
 
     // Move Left
-    public boolean MoveLeft(Player player) {
+    public boolean moveLeft(Player player) {
 
         String tile1 = map.ReturnTile(player.getX() - 1, player.getY());         // Get what kind of tile we're stepping on.
         if (tile1.equals("")) {
@@ -80,6 +91,7 @@ public class Game {
 
         map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
         player.setX(player.getX() - 1);// Move the object's x one step left.
+        stepCount += 1;
 
 
         for (GameObject box : objects) { //Moves box one step to the left if it has the same position as the players new position
@@ -99,7 +111,7 @@ public class Game {
     }
 
     //Move Right;
-    public boolean MoveRight(Player player) {
+    public boolean moveRight(Player player) {
 
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
@@ -122,6 +134,8 @@ public class Game {
 
         map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
         player.setX(player.getX() + 1); // Move the object's x one step right.
+        stepCount += 1;
+
         for (GameObject box : objects) { //Moves box one step to the right if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
@@ -130,8 +144,6 @@ public class Game {
                     box.setX(box.getX() + 1);
                 }
             }
-
-
         }
         return true;
 
@@ -139,7 +151,7 @@ public class Game {
 
 
     //Move Up -Upp i Y led = minus 1
-    public boolean MoveUp(Player player) {
+    public boolean moveUp(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() - 1);         // Get what kind of tile we're stepping on.
@@ -159,7 +171,9 @@ public class Game {
 
 
         map.tempMap[player.getY()][player.getX()] = ".";    //Ersätter nuvarande position med en punkt.
-        player.setY(player.getY() - 1);                     // Move the object's x one step up.
+        player.setY(player.getY() - 1); // Move the object's x one step up.
+        stepCount += 1;
+
         for (GameObject box : objects) {                            //Moves box one step up if it has the same position as the players new position
             if (box instanceof Box) {
                 int boxX = box.getX();
@@ -177,7 +191,7 @@ public class Game {
 
 
     //Move Down -Ner i Y led = plus 1
-    public boolean MoveDown(Player player) {
+    public boolean moveDown(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
@@ -198,7 +212,7 @@ public class Game {
 
         map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
         player.setY(player.getY() + 1); // Move the object's x one step down.
-
+        stepCount += 1;
 
         for (GameObject box : objects) { //Moves box one step down if it has the same position as the players new position
             if (box instanceof Box) {
@@ -219,11 +233,11 @@ public class Game {
         int rXY = randXY.nextInt(array1.length);
         switch (array1[rXY]) {
             case "x":  //är likamed x kör x led
-                eMoveX(map.enemy1);
+                eMoveX(enemy);
                 map.PrintMap(objects);
                 break;
             case "y":  //är likamed y kör y led
-                eMoveY(map.enemy1);
+                eMoveY(enemy);
                 map.PrintMap(objects);
                 break;
         }
@@ -262,9 +276,9 @@ public class Game {
         return true;
     }
 
-    public boolean death(Player player1, Enemy enemy1) { //saknar flera fiender?
+    public boolean death(Player player, Enemy enemy) { //saknar flera fiender?
 
-        if ((player1.getX() == enemy1.getX()) && (player1.getY() == enemy1.getY())) { //Compares enemy tile with player tile and returns true or false
+        if ((player.getX() == enemy.getX()) && (player.getY() == enemy.getY())) { //Compares enemy tile with player tile and returns true or false
             System.out.println("You are dead!");
             return true;
         }
