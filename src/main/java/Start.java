@@ -1,10 +1,10 @@
 import java.util.Scanner;
 import java.util.*;
 
-public class Start {
+public class    Start {
 
     Player player1 = new Player(5, 5);
-    Player player2 = new Player(7, 2);// Player bör flyttas ut ur Map till en mer passande klass.
+    Player player2 = new Player(7, 2);
     Player player3 = new Player(8, 5);
     Enemy enemy1 = new Enemy(4, 3);
     Enemy enemy2 = new Enemy(4, 3);
@@ -48,24 +48,39 @@ public class Start {
     public void levelChoice() {
 
         while (true) {
-            System.out.println("1 = level 1\n2 = level 2\n3 = level 3\n4 = back to start menu\"exit\" ends the program");
+            System.out.println("1 = level 1\n2 = level 2\n3 = level 3\n\"return\" = back to start menu\n\"exit\" ends the program");
             Scanner scan = new Scanner(System.in);
             String input = scan.nextLine().trim().toLowerCase();
 
             switch (input) {
                 case "1":
                     Game game = new Game();
+                    game.objectArrayClear();
+                    player1.setX(5);
+                    player1.setY(5);
+                    enemy1.setX(4);
+                    enemy1.setY(3);
                     game.gameOn(map.mapTemplate1, player1, enemy1);
                     break;
                 case "2":
                     Game game2 = new Game();
+                    game2.objectArrayClear();
+                    player2.setX(7);
+                    player2.setY(2);
+                    enemy2.setX(4);
+                    enemy2.setY(3);
                     game2.gameOn(map.mapTemplate2, player2, enemy2);
                     break;
                 case "3":
                     Game game3 = new Game();
+                    game3.objectArrayClear();
+                    player3.setX(8);
+                    player3.setY(5);
+                    enemy3.setX(4);
+                    enemy3.setY(3);
                     game3.gameOn(map.mapTemplate3, player3, enemy3);
                     break;
-                case "4":
+                case "return":
                     start();
                     break;
                 case "exit":
@@ -74,6 +89,5 @@ public class Start {
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
         }
-
     }
 }

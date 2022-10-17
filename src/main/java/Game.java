@@ -15,8 +15,8 @@ public class Game {
     Integer stepCount = 0;
     Boolean backToStart = false;
 
-    Player player;
-    Enemy enemy;
+    //Player player;
+    //Enemy enemy;
     String[][] mapTemplate;
 
     public Game() {
@@ -24,7 +24,7 @@ public class Game {
 
     public void gameOn(String[][] mapTemplate, Player player, Enemy enemy) {
         System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\"exit\" ends the game");
-        map.mapBuilder(mapTemplate, player, enemy);  // banan är en variasbel som ges av menyvalet
+        map.mapBuilder(mapTemplate, player, enemy);  // banan är en variabel som ges av menyvalet
         map.PrintMap(objects);
 
 
@@ -306,6 +306,7 @@ public class Game {
                 String pasMap = currentMap[y][x];
                 if (pasMap.equals("G") && actMap.equals("B")) {
                     gTCovered++;
+
                 }
             }
         }
@@ -314,6 +315,8 @@ public class Game {
             System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
             System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
             System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
+            
+            System.out.println("You got " + stepCount + " steps");
             return true;
         }
         return false;
