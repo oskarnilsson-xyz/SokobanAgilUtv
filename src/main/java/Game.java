@@ -13,12 +13,12 @@ public class Game {
     Random randY = new Random();
     String[] array2 = {"-1", "1"};
     Integer stepCount = 0;
-
     Boolean backToStart = false;
 
     //Player player;
     //Enemy enemy;
     String[][] mapTemplate;
+
     public Game() {
     }
 
@@ -106,8 +106,6 @@ public class Game {
 
         }
         return true;
-
-
     }
 
     //Move Right;
@@ -295,22 +293,32 @@ public class Game {
     }
 
     public boolean checkWin(String[][] currentMap) {
+        Integer numGtiles = 0;
+        Integer gTCovered = 0;
+        for (GameObject goal : objects) {
+            if (goal instanceof GoalTile) {
+                numGtiles++;
+            }
+        }
         for (int y = 0; y < this.map.tempMap.length; ++y) {
             for (int x = 0; x < this.map.tempMap[y].length; ++x) {
                 String actMap = this.map.tempMap[y][x];
                 String pasMap = currentMap[y][x];
                 if (pasMap.equals("G") && actMap.equals("B")) {
-                    System.out.println(" __  __            _      ___        __  __  __ ");
-                    System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
-                    System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
-                    System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
+                    gTCovered++;
 
-                    System.out.println("You got " + stepCount + " steps");
-                    return true;
                 }
             }
+        }
+        if ((numGtiles == gTCovered) && gTCovered > 0) {
+            System.out.println(" __  __            _      ___        __  __  __ ");
+            System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
+            System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
+            System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
+            
+            System.out.println("You got " + stepCount + " steps");
+            return true;
         }
         return false;
     }
 }
-
