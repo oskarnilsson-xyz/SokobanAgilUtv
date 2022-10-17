@@ -97,7 +97,22 @@ public class Map {
 
     // Lägger in ett objekt på Map, beroende vart vilken symbol den har och placerad den på koordinaten.
     public void mapBuilder(String[][] fromTemplate, Player player, Enemy enemy) { // mapTemplate1
-
+        /*for (int y = 0; y < fromTemplate.length; y++) { //Make player
+            for (int x = 0; x < fromTemplate[y].length; x++) {
+                String tile = fromTemplate[y][x];
+                if (tile.equals("P")) {
+                    Game.objects.add(new Player(x, y));
+                }
+            }
+        }
+        for (int y = 0; y < fromTemplate.length; y++) { //Make Enemy
+            for (int x = 0; x < fromTemplate[y].length; x++) {
+                String tile = fromTemplate[y][x];
+                if (tile.equals("E")) {
+                    Game.objects.add(new Enemy(x, y));
+                }
+            }
+        }*/
         for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
