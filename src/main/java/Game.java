@@ -25,7 +25,7 @@ public class Game {
         Player player = new Player(0,0);
         Enemy enemy = new Enemy(0,0);
 
-        System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\"exit\" ends the game");
+        System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\n\"exit\" ends the game");
         map.mapBuilder(mapTemplate, player, enemy, objects);  // banan är en variabel som ges av menyvalet
         map.PrintMap(objects);
 
