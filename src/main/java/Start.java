@@ -34,7 +34,7 @@ public class    Start {
     }
 
     public static String howTo() {
-        return ("The game is played on a board of squares, where each square is a floor or a wall.\nSome floor squares contain boxes, and some floor squares are marked as storage locations.\nThe player is confined to the board and may move horizontally or vertically onto empty squares (never through walls or boxes).\nThe player can move a box by walking up to it and push it to the square beyond.\nBoxes cannot be pulled, and they cannot be pushed to squares with walls or other boxes.\nThe number of boxes equals the number of storage locations.\nThe puzzle is solved when all boxes are placed at storage locations.");
+        return ("The game is played on a board of squares, where each square is a floor or a wall.\nSome floor squares contain boxes, and some floor squares are marked as storage locations.\nThe player is confined to the board and may move horizontally or vertically onto empty squares (never through walls or boxes).\nThe player can move a box by walking up to it and push it to the square beyond.\nBoxes cannot be pulled, and they cannot be pushed to squares with walls or other boxes.\nThe number of boxes equals the number of storage locations.\nThe puzzle is solved when all boxes are placed at storage locations.\n□ = Moveable boxes\n■ = Wall\n¥ = Player\nձ = Enemy");
     }
 
     public void levelChoice() {

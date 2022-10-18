@@ -20,42 +20,42 @@ public class Map {
     //Här kommer den inledande kartan som är spelbar, med tillhörande Box och Goal.
     String[][] mapTemplate1 =
             {
-                    new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "B", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "B", ".", ".", ".", "E", ".", ".", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "W", "W", "W", "W", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "W", ".", "P", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "W", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "W", ".", "G", ".", ".", ".", ".", "W"},
-                    new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"}
+                    new String[]{"■", "■", "■", "■", "■", "■", "■", "■", "■", "■"},
+                    new String[]{"■", ".", ".", ".", ".", ".", ".", ".", ".", "■"},
+                    new String[]{"■", ".", "□", ".", ".", ".", ".", ".", ".", "■"},
+                    new String[]{"■", ".", "□", ".", ".", ".", "ձ", ".", ".", "■"},
+                    new String[]{"■", ".", ".", ".", ".", ".", ".", ".", ".", "■"},
+                    new String[]{"■", ".", "■", "■", "■", "■", ".", ".", ".", "■"},
+                    new String[]{"■", ".", "■", ".", "¥", ".", ".", ".", ".", "■"},
+                    new String[]{"■", ".", "■", ".", ".", ".", ".", ".", ".", "■"},
+                    new String[]{"■", ".", "■", ".", "X", ".", ".", ".", ".", "■"},
+                    new String[]{"■", "■", "■", "■", "■", "■", "■", "■", "■", "■"}
             };
     String[][] mapTemplate2 =
             {
-                    new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
-                    new String[]{"W", ".", "W", ".", ".", ".", ".", ".", "G", "W"},
-                    new String[]{"W", "P", "W", "B", ".", ".", "W", "W", "W", "W"},
-                    new String[]{"W", ".", "W", ".", ".", "B", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", ".", "W", "E", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", ".", "W", ".", "B", "W", ".", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", "W", ".", "W"},
-                    new String[]{"W", ".", ".", "W", "W", ".", ".", "W", ".", "W"},
-                    new String[]{"W", "G", ".", "W", "W", ".", ".", "W", "G", "W"},
-                    new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"}
+                    new String[]{"■", "■", "■", "■", "■", "■", "■", "■", "■", "■"},
+                    new String[]{"■", ".", "■", ".", ".", ".", ".", ".", "X", "■"},
+                    new String[]{"■", "¥", "■", "□", ".", ".", "■", "■", "■", "■"},
+                    new String[]{"■", ".", "■", ".", ".", "□", ".", ".", ".", "■"},
+                    new String[]{"■", ".", ".", ".", "■", "ձ", ".", ".", ".", "■"},
+                    new String[]{"■", ".", ".", ".", "■", ".", "□", "■", ".", "■"},
+                    new String[]{"■", ".", ".", ".", ".", ".", ".", "■", ".", "■"},
+                    new String[]{"■", ".", ".", "■", "■", ".", ".", "■", ".", "■"},
+                    new String[]{"■", "X", ".", "■", "■", ".", ".", "■", "X", "■"},
+                    new String[]{"■", "■", "■", "■", "■", "■", "■", "■", "■", "■"}
             };
     String[][] mapTemplate3 =
             {
-                    new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
-                    new String[]{"W", "G", "W", "W", "W", ".", ".", "G", "W", "W"},
-                    new String[]{"W", ".", "W", ".", ".", "E", ".", ".", "W", "W"},
-                    new String[]{"W", ".", ".", "B", ".", "W", "W", ".", "W", "W"},
-                    new String[]{"W", "B", ".", ".", "B", ".", ".", ".", "W", "W"},
-                    new String[]{"W", ".", "W", ".", "W", ".", "B", ".", "W", "W"},
-                    new String[]{"W", ".", "W", ".", ".", ".", "W", ".", "W", "W"},
-                    new String[]{"W", ".", "W", "W", "W", ".", "B", ".", ".", "W"},
-                    new String[]{"W", "G", "W", "P", ".", ".", ".", "G", "G", "W"},
-                    new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"}
+                    new String[]{"■", "■", "■", "■", "■", "■", "■", "■", "■", "■"},
+                    new String[]{"■", "X", "■", "■", "■", ".", ".", "X", "■", "■"},
+                    new String[]{"■", ".", "■", ".", ".", "ձ", ".", ".", "■", "■"},
+                    new String[]{"■", ".", ".", "□", ".", "■", "■", ".", "■", "■"},
+                    new String[]{"■", "□", ".", ".", "□", ".", ".", ".", "■", "■"},
+                    new String[]{"■", ".", "■", ".", "■", ".", "□", ".", "■", "■"},
+                    new String[]{"■", ".", "■", ".", ".", ".", "■", ".", "■", "■"},
+                    new String[]{"■", ".", "■", "■", "■", ".", "□", ".", ".", "■"},
+                    new String[]{"■", "X", "■", "¥", ".", ".", ".", "X", "X", "■"},
+                    new String[]{"■", "■", "■", "■", "■", "■", "■", "■", "■", "■"}
             };
 
 
@@ -100,7 +100,7 @@ public class Map {
         for (int y = 0; y < fromTemplate.length; y++) { //Make player
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
-                if (tile.equals("P")) {
+                if (tile.equals("¥")) {
                     player.setX(x);
                     player.setY(y);
                     objects.add(player);
@@ -110,7 +110,7 @@ public class Map {
         for (int y = 0; y < fromTemplate.length; y++) { //Make Enemy
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
-                if (tile.equals("E")) {
+                if (tile.equals("ձ")) {
                     enemy.setX(x);
                     enemy.setY(y);
                     objects.add(enemy);
@@ -120,7 +120,7 @@ public class Map {
         for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
-                if (tile.equals("W")) {
+                if (tile.equals("■")) {
                     objects.add(new Wall(x, y));
                 }
             }
@@ -128,7 +128,7 @@ public class Map {
         for (int y = 0; y < fromTemplate.length; y++) { //Make goal
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
-                if (tile.equals("G")) {
+                if (tile.equals("X")) {
                     objects.add(new GoalTile(x, y));
                 }
             }
@@ -136,7 +136,7 @@ public class Map {
         for (int y = 0; y < fromTemplate.length; y++) {//Make Box
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
-                if (tile.equals("B")) {
+                if (tile.equals("□")) {
                     objects.add(new Box(x, y));
                 }
             }
