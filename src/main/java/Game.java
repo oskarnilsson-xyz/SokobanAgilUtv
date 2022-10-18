@@ -100,10 +100,10 @@ public class Game {
 
         }
         String tile2 = map.ReturnTile(player.getX() - 2, player.getY());        //Kollar 2 tiles fram
-        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && ((tile2.equals("■") || (tile2.equals("ձ")) || tile2.equals("□")))) { //Kollar så att lådan går att flytta
             return false;
-
         }
+
 
         map.tempMap[player.getY()][player.getX()] = "."; // Ersätter nuvarande position med en punkt.
         player.setX(player.getX() - 1);// Move the object's x one step left.
@@ -140,9 +140,10 @@ public class Game {
 
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
 
-        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && ((tile2.equals("■") || (tile2.equals("ձ")) || tile2.equals("□")))) { //Kollar så att lådan går att flytta
             return false;
         }
+
 
 
         map.tempMap[player.getY()][player.getX()] = "."; //Ersätter nuvarande position med en punkt.
@@ -177,9 +178,10 @@ public class Game {
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() - 2);        //Kollar 2 tiles fram
 
-        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && ((tile2.equals("■") || (tile2.equals("ձ")) || tile2.equals("□")))) { //Kollar så att lådan går att flytta
             return false;
         }
+
 
 
         map.tempMap[player.getY()][player.getX()] = ".";    //Ersätter nuvarande position med en punkt.
@@ -216,7 +218,7 @@ public class Game {
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() + 2);        //Kollar 2 tiles fram
 
-        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && ((tile2.equals("■") || (tile2.equals("ձ")) || tile2.equals("□")))) { //Kollar så att lådan går att flytta
             return false;
         }
 
