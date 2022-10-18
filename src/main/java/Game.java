@@ -15,15 +15,14 @@ public class Game {
     Integer stepCount = 0;
     Boolean backToStart = false;
 
-    String[][] mapTemplate;
 
     public Game() {
         objects = new ArrayList<GameObject>();
     }
 
     public void gameOn(String[][] mapTemplate) {
-        Player player = new Player(0,0);
-        Enemy enemy = new Enemy(0,0);
+        Player player = new Player(0, 0);
+        Enemy enemy = new Enemy(0, 0);
 
         System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\n\"exit\" ends the game");
         map.mapBuilder(mapTemplate, player, enemy, objects);  // banan är en variabel som ges av menyvalet
@@ -39,21 +38,33 @@ public class Game {
             switch (input) {
                 case "a":
                     moveLeft(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "d":
                     moveRight(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "w":
                     moveUp(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "s":
                     moveDown(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
@@ -63,9 +74,13 @@ public class Game {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
+                    System.out.println("Invalid input. The ape is now sad. \uD83D\uDC12");
             }
         }
+        if (death(player, enemy)) {
+            System.out.println("You are dead! \uD83D\uDC80");
+        }
+
     }
 
 
@@ -121,7 +136,6 @@ public class Game {
         } else if (tile1.equals("■")) {
             System.out.println("That's a wall!");
             return false;
-
         }
 
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
@@ -145,7 +159,6 @@ public class Game {
             }
         }
         return true;
-
     }
 
 
@@ -185,7 +198,6 @@ public class Game {
 
         }
         return true;
-
     }
 
 
@@ -233,11 +245,9 @@ public class Game {
         switch (array1[rXY]) {
             case "x":  //är likamed x kör x led
                 eMoveX(enemy);
-                map.PrintMap(objects);
                 break;
             case "y":  //är likamed y kör y led
                 eMoveY(enemy);
-                map.PrintMap(objects);
                 break;
         }
     }
@@ -278,7 +288,6 @@ public class Game {
     private boolean death(Player player, Enemy enemy) { //saknar flera fiender?
 
         if ((player.getX() == enemy.getX()) && (player.getY() == enemy.getY())) { //Compares enemy tile with player tile and returns true or false
-            System.out.println("You are dead!");
             return true;
         }
 
@@ -316,7 +325,7 @@ public class Game {
             System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
             System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
             System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
-            
+
             System.out.println("You got " + stepCount + " steps");
             return true;
         }
