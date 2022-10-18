@@ -15,15 +15,15 @@ public class Game {
     Integer stepCount = 0;
     Boolean backToStart = false;
 
-    String[][] mapTemplate;
+
 
     public Game() {
         objects = new ArrayList<GameObject>();
     }
 
     public void gameOn(String[][] mapTemplate) {
-        Player player = new Player(0,0);
-        Enemy enemy = new Enemy(0,0);
+        Player player = new Player(0, 0);
+        Enemy enemy = new Enemy(0, 0);
 
         System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\"exit\" ends the game");
         map.mapBuilder(mapTemplate, player, enemy, objects);  // banan är en variabel som ges av menyvalet
@@ -39,21 +39,33 @@ public class Game {
             switch (input) {
                 case "a":
                     moveLeft(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "d":
                     moveRight(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "w":
                     moveUp(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
                 case "s":
                     moveDown(player);
+                    if (death(player, enemy)) { //Checks if player enters enemy tile before enemy moves
+                        break;
+                    }
                     enemyMove(enemy);
                     map.PrintMap(objects);
                     break;
@@ -63,8 +75,11 @@ public class Game {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
+                    System.out.println("Invalid input. The ape is now sad.");
             }
+        }
+        if (death(player, enemy)) {
+            System.out.println("You are dead!");
         }
         objectArrayClear();
     }
@@ -111,24 +126,21 @@ public class Game {
     }
 
     //Move Right;
-    private boolean moveRight(Player player) {
+    private void moveRight(Player player) {
 
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
 
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
-            return false;
         } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
-            return false;
 
         }
 
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
-            return false;
         }
 
 
@@ -145,28 +157,24 @@ public class Game {
                 }
             }
         }
-        return true;
 
     }
 
 
     //Move Up -Upp i Y led = minus 1
-    private boolean moveUp(Player player) {
+    private void moveUp(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() - 1);         // Get what kind of tile we're stepping on.
 
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
-            return false;
         } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
-            return false;
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() - 2);        //Kollar 2 tiles fram
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
-            return false;
         }
 
 
@@ -185,28 +193,24 @@ public class Game {
 
 
         }
-        return true;
 
     }
 
 
     //Move Down -Ner i Y led = plus 1
-    private boolean moveDown(Player player) {
+    private void moveDown(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
 
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
-            return false;
         } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
-            return false;
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() + 2);        //Kollar 2 tiles fram
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
-            return false;
         }
 
 
@@ -223,7 +227,6 @@ public class Game {
                 }
             }
         }
-        return true;
     }
 
 
@@ -234,11 +237,9 @@ public class Game {
         switch (array1[rXY]) {
             case "x":  //är likamed x kör x led
                 eMoveX(enemy);
-                map.PrintMap(objects);
                 break;
             case "y":  //är likamed y kör y led
                 eMoveY(enemy);
-                map.PrintMap(objects);
                 break;
         }
     }
@@ -279,7 +280,6 @@ public class Game {
     private boolean death(Player player, Enemy enemy) { //saknar flera fiender?
 
         if ((player.getX() == enemy.getX()) && (player.getY() == enemy.getY())) { //Compares enemy tile with player tile and returns true or false
-            System.out.println("You are dead!");
             return true;
         }
 
@@ -317,7 +317,7 @@ public class Game {
             System.out.println(" \\ \\/ /__  __ __  | | /| / (_)__    / / / / / / ");
             System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
             System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
-            
+
             System.out.println("You got " + stepCount + " steps");
             return true;
         }

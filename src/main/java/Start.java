@@ -28,7 +28,7 @@ public class    Start {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
+                    System.out.println("Invalid input. The ape is now sad.");
             }
         }
     }
@@ -61,7 +61,7 @@ public class    Start {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
+                    System.out.println("Invalid input. The ape is now sad.");
             }
         }
     }
