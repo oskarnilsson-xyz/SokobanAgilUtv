@@ -66,7 +66,6 @@ public class Game {
                     System.out.println("Snälla skriv korrekt. Annars blir apan ledsen.");
             }
         }
-        objectArrayClear();
     }
 
 
@@ -80,13 +79,13 @@ public class Game {
 
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile1.equals("W")) {
+        } else if (tile1.equals("■")) {
             System.out.println("That's a wall!");
             return false;
 
         }
         String tile2 = map.ReturnTile(player.getX() - 2, player.getY());        //Kollar 2 tiles fram
-        if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
             return false;
 
         }
@@ -119,7 +118,7 @@ public class Game {
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile1.equals("W")) {
+        } else if (tile1.equals("■")) {
             System.out.println("That's a wall!");
             return false;
 
@@ -127,7 +126,7 @@ public class Game {
 
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
 
-        if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
             return false;
         }
 
@@ -159,13 +158,13 @@ public class Game {
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile1.equals("W")) {
+        } else if (tile1.equals("■")) {
             System.out.println("That's a wall!");
             return false;
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() - 2);        //Kollar 2 tiles fram
 
-        if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
             return false;
         }
 
@@ -199,13 +198,13 @@ public class Game {
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
             return false;
-        } else if (tile1.equals("W")) {
+        } else if (tile1.equals("■")) {
             System.out.println("That's a wall!");
             return false;
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() + 2);        //Kollar 2 tiles fram
 
-        if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+        if (tile1.equals("□") && (tile2.equals("■") || tile2.equals("□"))) { //Kollar så att lådan går att flytta
             return false;
         }
 
@@ -249,9 +248,9 @@ public class Game {
         String tile = map.ReturnTile(enemy.getX() + Integer.parseInt(array2[rX]), enemy.getY());
         if (tile.equals("")) {
             return false;
-        } else if (tile.equals("W")) {
+        } else if (tile.equals("■")) {
             return false;
-        } else if (tile.equals("B")) {
+        } else if (tile.equals("□")) {
             return false;
         }
         map.tempMap[enemy.getY()][enemy.getX()] = ".";
@@ -266,9 +265,9 @@ public class Game {
 
         if (tile.equals("")) {
             return false;
-        } else if (tile.equals("W")) {
+        } else if (tile.equals("■")) {
             return false;
-        } else if (tile.equals("B")) {
+        } else if (tile.equals("□")) {
             return false;
         }
         map.tempMap[enemy.getY()][enemy.getX()] = ".";
@@ -286,13 +285,13 @@ public class Game {
         return false;
     }
 
-    private void objectArrayClear() { // Tar bort alla object i listan GameObjects.
+    /*private void objectArrayClear() { // Tar bort alla object i listan GameObjects.
         int list = objects.size();
         for (int y = 0; y < list; y++) {
             objects.remove(0);
         }
+    }*/
 
-    }
 
     private boolean checkWin(String[][] currentMap) {
         Integer numGtiles = 0;
@@ -306,7 +305,7 @@ public class Game {
             for (int x = 0; x < this.map.tempMap[y].length; ++x) {
                 String actMap = this.map.tempMap[y][x];
                 String pasMap = currentMap[y][x];
-                if (pasMap.equals("G") && actMap.equals("B")) {
+                if (pasMap.equals("X") && actMap.equals("□")) {
                     gTCovered++;
 
                 }
