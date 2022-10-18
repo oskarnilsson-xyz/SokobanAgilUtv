@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Game {
 
     // Skapar en lista med alla objekt i spelet som används för att rita ut dem på kartan.
-    public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    public ArrayList<GameObject> objects;
     // Skapar kartan från Map-klassen och ritar ut den.
     Map map = new Map();
     Scanner scan = new Scanner(System.in);
@@ -15,16 +15,18 @@ public class Game {
     Integer stepCount = 0;
     Boolean backToStart = false;
 
-    //Player player;
-    //Enemy enemy;
     String[][] mapTemplate;
 
     public Game() {
+        objects = new ArrayList<GameObject>();
     }
 
-    public void gameOn(String[][] mapTemplate, Player player, Enemy enemy) {
+    public void gameOn(String[][] mapTemplate) {
+        Player player = new Player(0,0);
+        Enemy enemy = new Enemy(0,0);
+
         System.out.println("To move your player use:\na = left\nd = right\nw = upp\ns = down\n\"return\" return to main menu\"exit\" ends the game");
-        map.mapBuilder(mapTemplate, player, enemy);  // banan är en variabel som ges av menyvalet
+        map.mapBuilder(mapTemplate, player, enemy, objects);  // banan är en variabel som ges av menyvalet
         map.PrintMap(objects);
 
 
@@ -71,7 +73,7 @@ public class Game {
     // Här beskrivs ytterligare rörelser, hur objekten flyttas i förhållande till Player.
 
     // Move Left
-    public boolean moveLeft(Player player) {
+    private boolean moveLeft(Player player) {
 
         String tile1 = map.ReturnTile(player.getX() - 1, player.getY());         // Get what kind of tile we're stepping on.
         if (tile1.equals("")) {
@@ -109,7 +111,7 @@ public class Game {
     }
 
     //Move Right;
-    public boolean moveRight(Player player) {
+    private boolean moveRight(Player player) {
 
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
@@ -149,7 +151,7 @@ public class Game {
 
 
     //Move Up -Upp i Y led = minus 1
-    public boolean moveUp(Player player) {
+    private boolean moveUp(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() - 1);         // Get what kind of tile we're stepping on.
@@ -189,7 +191,7 @@ public class Game {
 
 
     //Move Down -Ner i Y led = plus 1
-    public boolean moveDown(Player player) {
+    private boolean moveDown(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
@@ -225,7 +227,7 @@ public class Game {
     }
 
 
-    public void enemyMove(Enemy enemy) {
+    private void enemyMove(Enemy enemy) {
         Random randXY = new Random();
         String[] array1 = {"x", "y"};
         int rXY = randXY.nextInt(array1.length);
@@ -242,7 +244,7 @@ public class Game {
     }
 
     // Move X
-    public boolean eMoveX(Enemy enemy) {
+    private boolean eMoveX(Enemy enemy) {
         int rX = randX.nextInt(array2.length);
         String tile = map.ReturnTile(enemy.getX() + Integer.parseInt(array2[rX]), enemy.getY());
         if (tile.equals("")) {
@@ -258,7 +260,7 @@ public class Game {
     }
 
     //Move Y
-    public boolean eMoveY(Enemy enemy) {
+    private boolean eMoveY(Enemy enemy) {
         int rY = randY.nextInt(array2.length);
         String tile = map.ReturnTile(enemy.getX(), enemy.getY() + Integer.parseInt(array2[rY]));
 
@@ -274,7 +276,7 @@ public class Game {
         return true;
     }
 
-    public boolean death(Player player, Enemy enemy) { //saknar flera fiender?
+    private boolean death(Player player, Enemy enemy) { //saknar flera fiender?
 
         if ((player.getX() == enemy.getX()) && (player.getY() == enemy.getY())) { //Compares enemy tile with player tile and returns true or false
             System.out.println("You are dead!");
@@ -284,7 +286,7 @@ public class Game {
         return false;
     }
 
-    public void objectArrayClear() { // Tar bort alla object i listan GameObjects.
+    private void objectArrayClear() { // Tar bort alla object i listan GameObjects.
         int list = objects.size();
         for (int y = 0; y < list; y++) {
             objects.remove(0);
@@ -292,7 +294,7 @@ public class Game {
 
     }
 
-    public boolean checkWin(String[][] currentMap) {
+    private boolean checkWin(String[][] currentMap) {
         Integer numGtiles = 0;
         Integer gTCovered = 0;
         for (GameObject goal : objects) {

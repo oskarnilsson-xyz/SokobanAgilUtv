@@ -23,12 +23,12 @@ public class Map {
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", "B", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", "B", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", "B", ".", ".", ".", "E", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", ".", ".", "P", ".", ".", ".", ".", "W"},
                     new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", "B", "B", ".", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", "G", "G", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", ".", ".", "G", ".", ".", ".", ".", "W"},
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"}
             };
     String[][] mapTemplate2 =
@@ -37,7 +37,7 @@ public class Map {
                     new String[]{"W", ".", "W", ".", ".", ".", ".", ".", "G", "W"},
                     new String[]{"W", "P", "W", "B", ".", ".", "W", "W", "W", "W"},
                     new String[]{"W", ".", "W", ".", ".", "B", ".", ".", ".", "W"},
-                    new String[]{"W", ".", ".", ".", ".", ".", ".", ".", ".", "W"},
+                    new String[]{"W", ".", ".", ".", ".", "E", ".", ".", ".", "W"},
                     new String[]{"W", "W", ".", ".", "W", ".", "B", "W", ".", "W"},
                     new String[]{"W", ".", ".", ".", "W", ".", ".", "W", ".", "W"},
                     new String[]{"W", ".", ".", "W", "W", ".", ".", "W", ".", "W"},
@@ -48,7 +48,7 @@ public class Map {
             {
                     new String[]{"W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
                     new String[]{"W", "G", "W", "W", "W", ".", ".", "G", "W", "W"},
-                    new String[]{"W", ".", "W", ".", ".", ".", ".", ".", "W", "W"},
+                    new String[]{"W", ".", "W", ".", ".", "E", ".", ".", "W", "W"},
                     new String[]{"W", ".", ".", "B", ".", "W", "W", "W", "W", "W"},
                     new String[]{"W", "B", ".", "B", ".", ".", ".", ".", "W", "W"},
                     new String[]{"W", ".", "W", "W", "W", ".", "B", ".", "W", "W"},
@@ -96,12 +96,14 @@ public class Map {
     }
 
     // Lägger in ett objekt på Map, beroende vart vilken symbol den har och placerad den på koordinaten.
-    public void mapBuilder(String[][] fromTemplate, Player player, Enemy enemy) { // mapTemplate1
-        /*for (int y = 0; y < fromTemplate.length; y++) { //Make player
+    public void mapBuilder(String[][] fromTemplate, Player player, Enemy enemy, ArrayList<GameObject> objects) { // mapTemplate1
+        for (int y = 0; y < fromTemplate.length; y++) { //Make player
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
                 if (tile.equals("P")) {
-                    Game.objects.add(new Player(x, y));
+                    player.setX(x);
+                    player.setY(y);
+                    objects.add(player);
                 }
             }
         }
@@ -109,15 +111,17 @@ public class Map {
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
                 if (tile.equals("E")) {
-                    Game.objects.add(new Enemy(x, y));
+                    enemy.setX(x);
+                    enemy.setY(y);
+                    objects.add(enemy);
                 }
             }
-        }*/
+        }
         for (int y = 0; y < fromTemplate.length; y++) { //Make Walls
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
                 if (tile.equals("W")) {
-                    Game.objects.add(new Wall(x, y));
+                    objects.add(new Wall(x, y));
                 }
             }
         }
@@ -125,7 +129,7 @@ public class Map {
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
                 if (tile.equals("G")) {
-                    Game.objects.add(new GoalTile(x, y));
+                    objects.add(new GoalTile(x, y));
                 }
             }
         }
@@ -133,11 +137,9 @@ public class Map {
             for (int x = 0; x < fromTemplate[y].length; x++) {
                 String tile = fromTemplate[y][x];
                 if (tile.equals("B")) {
-                    Game.objects.add(new Box(x, y));
+                    objects.add(new Box(x, y));
                 }
             }
         }
-        Game.objects.add(player); // Lägger till spelaren (bör nog placeras på annat ställe)
-        Game.objects.add(enemy); // Lägger till fienden (bör nog placeras på annat ställe)
     }
 }
