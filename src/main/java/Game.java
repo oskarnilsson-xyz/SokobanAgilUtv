@@ -16,7 +16,6 @@ public class Game {
     Boolean backToStart = false;
 
 
-
     public Game() {
         objects = new ArrayList<GameObject>();
     }
@@ -75,11 +74,11 @@ public class Game {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Invalid input. The ape is now sad.");
+                    System.out.println("Invalid input. The ape is now sad. \uD83D\uDC12");
             }
         }
         if (death(player, enemy)) {
-            System.out.println("You are dead!");
+            System.out.println("You are dead! \uD83D\uDC80");
         }
         objectArrayClear();
     }
@@ -126,21 +125,23 @@ public class Game {
     }
 
     //Move Right;
-    private void moveRight(Player player) {
+    private boolean moveRight(Player player) {
 
         String tile1 = map.ReturnTile(player.getX() + 1, player.getY());         // Get what kind of tile we're stepping on.
 
 
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
+            return false;
         } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
-
+            return false;
         }
 
         String tile2 = map.ReturnTile(player.getX() + 2, player.getY());
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+            return false;
         }
 
 
@@ -157,24 +158,27 @@ public class Game {
                 }
             }
         }
-
+        return true;
     }
 
 
     //Move Up -Upp i Y led = minus 1
-    private void moveUp(Player player) {
+    private boolean moveUp(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() - 1);         // Get what kind of tile we're stepping on.
 
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
+            return false;
         } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
+            return false;
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() - 2);        //Kollar 2 tiles fram
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+            return false;
         }
 
 
@@ -193,24 +197,27 @@ public class Game {
 
 
         }
-
+        return true;
     }
 
 
     //Move Down -Ner i Y led = plus 1
-    private void moveDown(Player player) {
+    private boolean moveDown(Player player) {
 
 
         String tile1 = map.ReturnTile(player.getX(), player.getY() + 1);         // Get what kind of tile we're stepping on.
 
         if (tile1.equals("")) {
             System.out.println("That's out of bounds!");
+            return false;
         } else if (tile1.equals("W")) {
             System.out.println("That's a wall!");
+            return false;
         }
         String tile2 = map.ReturnTile(player.getX(), player.getY() + 2);        //Kollar 2 tiles fram
 
         if (tile1.equals("B") && (tile2.equals("W") || tile2.equals("B"))) { //Kollar så att lådan går att flytta
+            return false;
         }
 
 
@@ -227,6 +234,7 @@ public class Game {
                 }
             }
         }
+        return true;
     }
 
 

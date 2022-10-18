@@ -28,7 +28,7 @@ public class    Start {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Invalid input. The ape is now sad.");
+                    System.out.println("Invalid input. The ape is now sad. \uD83D\uDC12");
             }
         }
     }
@@ -61,7 +61,7 @@ public class    Start {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Invalid input. The ape is now sad.");
+                    System.out.println("Invalid input. The ape is now sad. \uD83D\uDC12");
             }
         }
     }
