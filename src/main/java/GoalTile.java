@@ -5,7 +5,7 @@ public class GoalTile extends GameObject{
 
     //Skapades inledningvis, men har ingen nuvarande implementation. Kan användas vid framtiden (eller tas bort)
     public GoalTile(int x, int y) { //ärver från GameObject och position definieras när objektet skapas
-        super(x, y, "G");
+        super(x, y, "X");
     }
 
     public boolean isGoalTile() {
