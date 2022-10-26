@@ -5,5 +5,7 @@ public class Main {
 
            Start start = new Start();
            start.start();
+        //HighScore highscore = new HighScore();
+        //highscore.run();
     }
 }

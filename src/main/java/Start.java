@@ -23,7 +23,9 @@ public class    Start {
                     levelChoice();
                     break;
                 case "4":
-                    System.out.println("High score:\n1. - - - Linnea\n2. - - - Linnea\n3. - - - Linnea\n4. - - - Linnea\n5. - - - Linnea");
+                    HighScore highscore = new HighScore();
+                    highscore.setHighScore();
+                    highscore.printHighScore();
                     break;
                 case "exit":
                     System.exit(0);

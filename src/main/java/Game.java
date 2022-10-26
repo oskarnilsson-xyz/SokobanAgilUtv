@@ -328,7 +328,13 @@ public class Game {
             System.out.println("  \\  / _ \\/ // /  | |/ |/ / / _ \\  /_/ /_/ /_/  ");
             System.out.println("  /_/\\___/\\_,_/   |__/|__/_/_//_/ (_) (_) (_)   ");
 
-            System.out.println("You got " + stepCount + " steps");
+            HighScore highscore = new HighScore();
+            highscore.setHighScore();
+            if(highscore.madeHighScore(stepCount)) {
+                System.out.println("You made highscore!");
+                highscore.addHighScore("Linnea", stepCount);
+                highscore.printHighScore();
+            } else System.out.println("You got " + stepCount + " steps");
             return true;
         }
         return false;
